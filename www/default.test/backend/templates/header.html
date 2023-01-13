@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Админ-панель</title>
+    <link type="text/css" href="/backend/css/css.css" rel="stylesheet">
+    <script src="/backend/js/js.js" defer></script>
+    <script src="/backend/pages/templates/ckeditor/ckeditor.js"></script>
+</head>
+<body>
+<div class="content">
+    <div class="top">
+        <div class="header">Админ-панель сайта <a href="/" target="_blank" class="img"><img src="/img/new-tab.png" title="Открыть сайт в новой вкладке" alt="Открыть сайт в новой вкладке" class="icon"></a></div>
+        <div class="auth">
+            <img src="/img/user.png" class="icon" alt="user">
+            <div><?=$userName;?></div> 	&rArr;
+            <div><a href="/admin?do=logout">выйти из аккаунта</a></div>
+            <a href="/admin?do=logout" class="img"><img src="/img/sign-out.png" class="icon" alt="go out"></a>
+        </div>
+    </div>
+    <div class="note"><?=$note;?></div>
+
+    <div class="tabs">
+        <div class="tabs-header">
+            <div class="tab-header"><a href="/admin/options/" data-id="options">Опции</a></div>
+            <div class="tab-header"><a href="/admin/pages/" data-id="pages">Страницы</a></div>
+            <div class="tab-header"><a href="/admin/main/" data-id="main">Главная</a></div>
+            <div class="tab-header"><a href="/admin/blog/" data-id="blog">Блог</a></div>
+            <div class="tab-header"><a href="/admin/portfolio/" data-id="portfolio">Портфолио</a></div>
+            <div class="tab-header"><a href="/admin/user-files/" data-id="user-files">Файлы</a></div>
+        </div>
+
+        <div class="tabs-content">
+            <div class="tab-content" data-id="">
+                <?=$out;?>
