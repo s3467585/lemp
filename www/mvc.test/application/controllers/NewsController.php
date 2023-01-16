@@ -1,14 +1,15 @@
 <?php
 
-namespace application\contrlollers;
+namespace application\controllers;
 
-class NewsController {
+use application\core\Controller;
 
-	function __construct() {
-			
-		echo 'NewsController';
-	}
+class NewsController extends Controller {
+		
+	public function showAction() {
 	
+		echo 'Станица с новостью';
+	}
 
 }
 

@@ -1,13 +1,25 @@
 <?php
 
-namespace application\contrlollers;
+namespace application\controllers;
 
-class MainController {
+use application\core\Controller;
 
-	function __construct() {
-			
-		echo 'MainController';
+class MainController extends Controller {
+
+	public function indexAction() {
+
+		$vars = [
+			'name' => 'Вася',
+			'age' => 80,
+		];
+		
+		$this->view->render('Главная страница', $vars) ;
 	}
+
 	
+	public function contactAction() {
+		
+		echo 'Контакты';
+	}
 
 }
