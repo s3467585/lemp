@@ -1,4 +1,4 @@
-<?php
+<?php // Создаёт экземпляр класса XxxxController и передаёт в переменную $controller
 
 namespace application\core;
 
@@ -18,12 +18,14 @@ class Router {
 		 }
 		//debug($this->routes); 
 	}
+
 	// Функция добавления регулярных выражений значению route
 	public function add($route, $params) {
 		$route = '#^'.$route.'$#';
 		$this->routes[$route] = $params;
 		
 	}
+
 	// Функция сравнения  url адресной строки с routes
 	public function match() {
 		$url = trim($_SERVER['REQUEST_URI'], '/');
@@ -44,6 +46,7 @@ class Router {
 		}
 		return false;
 	}
+	
 	// Функция запуска Controller
 	public function run(){
 
