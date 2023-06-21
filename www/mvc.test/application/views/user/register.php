@@ -1,6 +1,6 @@
-<!--Форма авторизации -->
+<!--Форма регистрации -->
 
-<h1>Регистрация</h1>
+<h1>Регистрация пользователя</h1>
 <hr>
 	<form action="../modules/singup.php" method="POST">
 		<label>Ф.И.О</label>
@@ -14,10 +14,10 @@
 		<label>Подтверждение пароля</label>
 		<input type="password" placeholder="Подтвердите пароль" name="password_confirm">
 		<button type="submit">Зарегистрироваться</button> 
-		<p class="msg">
-			У вас есть аккаунт? - <a href="/">авторизуйтесь</a>
+		<p class="center">
+			У вас есть аккаунт? - <a href="/login">авторизуйтесь</a>
 		</p>
-			<div class="main_form_massege">
-				<?=$message;?>
-			</div>	
+		<div class="form_massege">
+			<?php $message ?>
+		</div>	
 	</form>

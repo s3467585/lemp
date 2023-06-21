@@ -83,8 +83,10 @@ form > button {
 	margin-top: var(--margin-top) ;
 }
 
+
 input {
     //margin: 10px 0;
+    height: 25px;
     padding: var(--padding);
     border: unset;
     outline: none;
@@ -110,7 +112,7 @@ button {
 
 p {
 	padding: var(--padding);
-	font-size: small;
+	font-size: var(--font-size);
 }
 
 a, button {
@@ -405,6 +407,10 @@ a:focus, button:focus, .nav_item:focus, input:focus{
   background: var(--background-body);
   color: var(--font-darck-color);
   //border-left: 3px solid var(--background-body);
+ }
+
+ .center {
+ 	text-align: center
  }
 
 

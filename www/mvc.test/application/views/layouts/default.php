@@ -55,9 +55,6 @@
 				<div class="content_block">		    
 			    	<?php echo $content; ?>    
 				</div>
-				<div class="content_block">		    
-			    	<?php echo $content; ?>    
-				</div>
 			</div>   
 			<div id="section">Section</div>  
 			<div id="footer">
