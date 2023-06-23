@@ -12,7 +12,7 @@ class UserController extends Controller {
 
 		if (!empty($_POST)) {                               
 
-			$this->view->massage('TEST', 'ТЕКСТ ОШИБКИ');
+			$this->view->massage('STATUS: TEST', 'ТЕКСТ ОШИБКИ');
 		}
 
 		$this->view->render('SovHome авторизация пользователя') ;
@@ -23,7 +23,7 @@ class UserController extends Controller {
 
 		if (!empty($_POST)) {
 
-			$this->view->massage('TEST', 'ТЕКСТ ОШИБКИ');
+			$this->view->massage('STATUS: TEST', 'ТЕКСТ ОШИБКИ');
 		}
 		
 		$this->view->render('SovHome регистрация пользователя') ;
