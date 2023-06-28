@@ -13,6 +13,8 @@ class Db {
 
 		if (file_exists($path)){
 
+			$this->view->message("test", 'test'); //////////////////
+
 			$config = require $path;
 
 			try {  

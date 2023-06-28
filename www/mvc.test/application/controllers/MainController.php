@@ -9,6 +9,7 @@ class MainController extends Controller {
 
 	public function indexAction() {		
 		$this->view->render('Главная страница');
+		$this->view->message("test", 'test');
 	}
 
 	public function aboutAction() {		
