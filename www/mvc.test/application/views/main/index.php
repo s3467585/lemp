@@ -1,10 +1,10 @@
 <!--Форма авторизации -->
 
-<h1>Авторизация пользователя</h1>
+<h1>Вход на страницу пользователя</h1>
 
 <hr>
-	<form action="../modules/singup.php" method="POST">
-		<label>Логин</label>
+	<form action="/login" method="POST">
+		<label>E-Mail</label>
 		<input type="text" placeholder="Введите адрес своей почты" name="email" id="email" required>
 		<label>Пароль</label>
 		<input type="password" placeholder="Введите пароль" name="password" id="password" required>

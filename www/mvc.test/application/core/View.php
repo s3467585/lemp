@@ -1,5 +1,5 @@
 <?php 	// Базовый класс View. Производит рендер страницы. 
-		//Подгружается общий шаблон $layout, а затем вид переданный экзесляром контролера
+		//Подгружается общий шаблон $layout, а затем вид переданный экземляром контролера
 
 namespace application\core;
 
@@ -13,6 +13,7 @@ class View {
 
 		$this->route = $route;
 		$this->path = $route['controller'].'/'.$route['action'];
+		
 	}
 
 	public function render($title, $vars = []) {
@@ -46,9 +47,8 @@ class View {
 		exit;
 	}	
 
-	public function massage($status = '', $massage = '') {
-
-		exit(json_encode(['status' => $status, 'message' => $massage]));
+	public function message($status, $message) {
+		exit(json_encode(['status' => $status, 'message' => $message]));
 	}
 
 	public function location($url) {

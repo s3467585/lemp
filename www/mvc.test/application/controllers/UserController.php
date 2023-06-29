@@ -8,14 +8,17 @@ use application\core\Controller;
 
 class UserController extends Controller {
 
-	public function loginAction() {
+	public function loginAction() {										// Авторизация пользователя
 
-		if (!empty($_POST)) {                               
+		if (!empty($_POST)) {											// Проверка POST запроса
+			if (!$this->model->loginValidate($_POST)) {					// Проветка запроса в моделе
+				$this->view->message('error', $this->model->error);		// Вывод ошибки сформированной моделью
+			}                       
 
-			$this->view->massage('STATUS: TEST', 'ТЕКСТ ОШИБКИ');
+			$this->view->message('SUCCESS', 'Авторизация прошла успешно');
 		}
 
-		$this->view->render('SovHome авторизация пользователя') ;
+		$this->view->render('UserPage');
 
 	}
 
@@ -28,6 +31,10 @@ class UserController extends Controller {
 		
 		$this->view->render('SovHome регистрация пользователя') ;
 
+	}
+
+	public function upageAction () {
+		$this->view->render('User Page');
 	}
 
 }

@@ -2,7 +2,7 @@
 
 <h1>Регистрация пользователя</h1>
 <hr>
-	<form action="../modules/singup.php" method="POST">
+	<form action="/user/login" method="POST">
 		<label>Ф.И.О</label>
 		<input type="text" placeholder="Введите своё полное имя" name="full_name" id="full_name" required>
 		<!-- <label>Логин</label>

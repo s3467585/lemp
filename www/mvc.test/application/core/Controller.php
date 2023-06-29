@@ -18,7 +18,7 @@ abstract class Controller {
 			
 			View::errorCode(403);
 		}
-
+		
 		$this->view = new View($route);                            // Создание эклемпляра класса с Видом
 		$this->model = $this->loadModel($route['controller']);
 
@@ -27,7 +27,7 @@ abstract class Controller {
 
 	public function loadModel($name) {
 
-		$path = 'application\models\\'.ucfirst($name);
+		$path = 'application\models\\'.ucfirst($name).'Model';
 		if (class_exists($path)) {
 
 			 return new $path();

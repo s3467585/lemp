@@ -5,6 +5,7 @@ return [
 	'all' => [
 		'login',
 		'register',
+		'upage',
 	],
 
 	'autorizq' => [
