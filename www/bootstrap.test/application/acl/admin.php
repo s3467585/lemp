@@ -18,10 +18,10 @@ return [
 
 	'admin' => [
 		'administration',
-		'adduser',
-		'edituser',
-		'user_activation',
-		'deluser',
+		'addUser',
+		'editUser',
+		'userActivation',
+		'dellUser',
 		'devices',
 		'dev_activation',
 		'dev_del',

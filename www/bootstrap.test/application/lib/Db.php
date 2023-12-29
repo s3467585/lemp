@@ -43,9 +43,13 @@ class Db {
 
 	/* Функция подготовки запроса */
 	public function query($sql, $params = []) {
+		//debug($params);	
+		//debug($sql);	
 		$stmt = $this->db->prepare($sql);
 		if (!empty($params)) {
 			foreach ($params as $key => $val) {
+				 
+
 				 if (is_int($val)) {
 					$type = PDO::PARAM_INT;
 				} else {
@@ -55,6 +59,7 @@ class Db {
 				
 			}
 		}
+		//debug($stmt);
 		$stmt->execute();
 		return $stmt;
 	}
@@ -84,6 +89,10 @@ class Db {
 	
 	/* Принимает таблицу, столбец, значение и выдает количество найденых записей */
 	public function rowCount($table, $key, $param) {
+
+		$param = [
+			$key => $param,
+		];
 		
 		// запрос на выбор значения конкретного сталбца в конкретной таблице
 		$sql = 'SELECT COUNT('.$key.') AS num FROM '.$table.' WHERE '.$key.' = :'.$key;
@@ -100,12 +109,44 @@ class Db {
 	}
 
 	/* Проверка на наличие записи в таблице */
-	public function isColumnExist($column, $table, $val){
+	public function isColumnExist($column, $tableName, $val){
 		$params = [
 			$column => $val,
 		];
-		$sql = 'SELECT '.$column.' FROM '.$table.' WHERE '.$column.' = :'.$column.'';
+		$sql = 'SELECT '.$column.' FROM '.$tableName.' WHERE '.$column.' = :'.$column.'';
 		return $this->column($sql, $params);
+	}
+
+	/* Проверка существования таблицы */
+	public function isTableExist($tableName){
+		$params = [
+			'TABLE_NAME' => $tableName,
+		];
+		$sql = 'SHOW TABLES LIKE :TABLE_NAME';
+		if ($this->rowAll($sql, $params)){
+			return true;	
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	*	Обновление значения поля
+	*	@param String $tableName Имя изменяемой таблицы
+	*	@param String $column Имя колонки для изменения
+	*	@param int $id id для выбора строки
+	*	@param String $val Значение записываемое в поле
+	**/
+	public function updateColumn($tableName, $column, $id, $val) {
+		$params = [
+			'id' => $id,
+			$column => $val,
+		];
+
+		$sql = "UPDATE $tableName SET $column = :$column WHERE users.id = :id";
+			
+		$this->query($sql, $params);
+		return true;
 	}
 
 

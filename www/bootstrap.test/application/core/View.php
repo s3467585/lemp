@@ -47,18 +47,22 @@ class View {
 		header('Location:'.$url);
 		exit;
 	}	
-
+	/* Вызов алерт с сообщением*/
 	public function message($status, $message) {
 		exit(json_encode(['status' => $status, 'message' => $message]));
 	}
 
 	public function error_message($status, $message) {
 		exit(json_encode(['status' => $status, 'message' => $message]));
-		
 	}
-	/* Перенаправление на другой URL */
-	public function location($url) {
+
+	/* Перенаправление на другой URL через JS*/
+	public function location($url, $status = '', $message = '') {
 		//debug($url);
+		if (!empty($status) || !empty($status)){
+			exit(json_encode(['url' => $url, 'status' => $status, 'message' => $message]));	
+		}
+
 		exit(json_encode(['url' => $url]));
 	}
 

@@ -12,27 +12,31 @@ use PDO;
 
  	public $db;
  	public $error;
+ 	public $message;
+ 	public $tablPrefix = "stat_";
 
  	function __construct() {
  		$this->db = new Db;
  	}
 
-/* Функция авторизации $param = ['login' => 'login'] */
+/* Функция авторизации где $param это Логин */
 function signin($param) {
 
-	$param = [
-		'login' => $param,
-	];
-
-	$sql = 'SELECT * FROM users WHERE login = :login';
-	
-	//проверим количество записей с указанным логином
+	// проверим количество записей с указанным логином
 	$count = $this->db->rowCount('users', 'login', $param);
 	
 	if ($count['num'] == 0 ) {
 		$this->error = 'Логин не найден';
 		return false; 
 	}
+	
+	// заполняем данными пользователя из базы в переменную 
+	
+	$param = [
+		'login' => $param,
+	];
+
+	$sql = 'SELECT * FROM users WHERE login = :login';
 
 	$user = $this->db->row($sql, $param);
 	
@@ -132,6 +136,5 @@ function signin($param) {
 		}	
 		return $res;
 	}
-
 
 }

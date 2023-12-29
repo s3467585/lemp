@@ -31,26 +31,17 @@ class MainModel extends Model {
 			'creation_time' => time(), //date('Y-m-d H-i-s'),
 		];
 		
-		$param = ['login' => $post['login']];
-		
-		/* проверка наличия указанного логина и пароля на авторизацию*/
-		if (!$this->signin($param )) {
+		/* проверка наличия указанного логина */
+		$count = $this->db->rowCount('users', 'login', $post['login']);
 
-			/* проверка наличия укаханного логина в базе данных */
-			$count = $this->db->rowCount('users', 'login', $param);
-			if ($count['num'] > 0 ) {
-				$this->error = 'Пльзователь '.$params['login'].' уже существует';
-				return false;
-			
-			} else {
-			
-			$this->createUser($params);
-			$this->signin($param);
-			return true;
-			}
+		if ($count['num'] > 0 ) {
+			$this->error = 'Пльзователь '.$params['login'].' уже существует';
+			return false;
 		} 
-			$this->error = 'Пользователь уже существует, вы авторизованы';
-			return true;
+
+		$this->createUser($params);
+		$this->signin($param);
+		return true;
 	}
 		
 		

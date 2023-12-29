@@ -1,4 +1,4 @@
-<!-- Форма авторизации -->
+<!-- Форма авторизации Администратора -->
 <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="Signin">
     <div class="modal-dialog" role="document">
         <div class="modal-content rounded-4 shadow">

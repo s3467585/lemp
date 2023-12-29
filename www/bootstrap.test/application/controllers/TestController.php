@@ -15,7 +15,11 @@ class TestController extends Controller {
 	}
 
 	public function testAction() {	
+
+		$vars = [
+			'content' => "TEST",
+		];
 		
-		$this->view->render('TEST P');
+		$this->view->render('TEST P', $vars);
 	}
 }

@@ -19,45 +19,31 @@ $(document).ready(function() {
 			},
 		});
 	});
-});
 
+	$('a.btn').on('click', function(event) {
+		var json;
+		event.preventDefault();
 
-function myTimer() {
-
-$('#nav li a').click(function(){
-	    
-	    var toLoad = $(this).attr('href')+' #container_gr';
-	    $('#container_gr').hide('fast',loadContent);
-	    $('#load').remove();
-	    $('#load').fadeIn('normal');
-	    function loadContent() {
-	    	$('#container_gr').load(toLoad,'',showNewContent())
-	    }
-	    function showNewContent() {
-	    	$('#container_gr').show('normal',hideLoader());
-	    }
-	    function hideLoader() {
-	    	$('#load').fadeOut('normal');
-	    }
-	    return false;
-	    
-	    });
-
-
-
-}
-
-	$(document).ready(function() {
-	 
-	    setInterval(myTimer, 15000);
-	    
+		$.ajax({
+			type: "POST",
+			url: $(this).attr('href'),
+			contentType: false,
+			cache: false,
+			processData: false,
+			success: function(result) {
+				console.log(result);
+				json = jQuery.parseJSON(result);
+					if (json.status) {
+						alert(json.status + ' - ' + json.message);
+				} 	if (json.url) {
+						window.location.href = json.url;
+				}
+			},
+		});
 	});
 
 
 
+});
 
 
-/*setInterval(
-  () => console.log('Hello every 15 seconds'),
-  15000
-);*/

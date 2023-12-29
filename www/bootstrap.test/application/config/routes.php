@@ -58,22 +58,22 @@ return [
 
 	'sup/adduser' => [
 			'controller' => 'admin',
-			'action' => 'adduser',
+			'action' => 'addUser',
 		],
 
 	'sup/edituser' => [
 			'controller' => 'admin',
-			'action' => 'edituser',
+			'action' => 'editUser',
 		],
 
-	'sup/user_activation/{id:\d+}' => [
+	'sup/useractivation/{id:\d+}' => [
 			'controller' => 'admin',
-			'action' => 'user_activation',
+			'action' => 'userActivation',
 		],
 		
-	'sup/deluser/{id:\d+}' => [
+	'sup/delluser/{id:\d+}' => [
 			'controller' => 'admin',
-			'action' => 'deluser',
+			'action' => 'dellUser',
 		],
 
 	'sup/dev_activation/{id:\d+}' => [

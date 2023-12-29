@@ -20,7 +20,7 @@ class AdminController extends Controller {
 	public function signinAction() {
 						
 		if (isset($_SESSION['admin'])) {
-			$this->view->redirect('/sup/administration');
+			$this->view->location('/sup/administration');
 			return true;
 		}	
 
@@ -31,7 +31,7 @@ class AdminController extends Controller {
 				return false;
 			}
 			
-			if (!$this->model->signin($param = ['login' => $_POST['login']])) {
+			if (!$this->model->signin($_POST['login'])) {
 				$this->view->message('error', $this->model->error);
 				return false;
 		 	}
@@ -39,8 +39,11 @@ class AdminController extends Controller {
 		 	if (isset($_SESSION['autorize'])) {
 		 		$this->view->location('upage');	
 		 	}
-		 	//$this->view->message('saccess', 'Авторизация прошла успешно.');
-		 	$this->view->location('sup/administration');
+
+		 	if (isset($_SESSION['admin'])) {
+		 		$this->view->location('/sup/administration');	
+		 	}
+		 	//$this->view->message('saccess', 'Авторизация прошла успешно.');	
 		 }
 
 
@@ -71,36 +74,40 @@ class AdminController extends Controller {
 
 
 
-	public function adduserAction() {		
+	public function addUserAction() {		
 		$this->view->render('Добавить пользователя');
 	}
 
-	public function edituserAction() {		
+	public function editUserAction() {		
 		$this->view->render('Редактировать пользователя');
 	}
 
 	/* Активаця таблиц пользователя */
-	public function user_activationAction() {	
-		if (!$this->model->user_activation($this->route['id'])){
+	public function userActivationAction() {	
+		if (!$this->model->userActivation($this->route['id'])){
+			$this->view->message('error', $this->model->error);
+			return false;
+		}
+		
+		$this->view->location('/sup/administration', 'success', 'Привязки таблицы данных к пользователю выполнена успешно');
+	}
+
+	/* Снятие привязки таблиц пользователя */
+	public function dellUserAction() {	
+		if (!$this->model->dellUser($this->route['id'])){
 			$this->view->message('error', $this->model->error);
 			return false;
 		}
 
-		$this->view->redirect('/sup/administration');
-		exit ('Создание таблицы пользователя');
-		
-	}
-
-	public function deluserAction() {	
-		$this->model->deluser();
-		exit('Удление пользователя');
+		$this->view->location('/sup/administration', 'success', 'Отключение привязанной таблицы данных пользователя выполнено успешно');
 	}
 
 
 
 	public function logoutAction() {		
 		unset($_SESSION['admin']);
-		$this->view->redirect('/sup/signin');
+		//$this->view->redirect('/sup/signin');
+		$this->view->redirect('/signin');
 	}
 
 

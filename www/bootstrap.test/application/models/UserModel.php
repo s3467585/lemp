@@ -11,6 +11,7 @@ use application\core\Model;
 class UserModel extends Model {
 
 	public function upage(){
+
 		
 	}
 
@@ -35,7 +36,12 @@ class UserModel extends Model {
 		
 		$controlParam = [];
 		
-		$table = "stat_".$_SESSION['autorize']['login'];
+		$table = $this->tablePref.$_SESSION['autorize']['login'];
+
+		if (!$this->db->isTableExist($table)) {
+			$this->error = 'Таблица '.$table.' не найдена';
+			return false;
+		}
 
 		/* Запрос имен в таблице контолируемых параметров*/
 		$columnName = $this->columnName($table);
@@ -43,11 +49,11 @@ class UserModel extends Model {
 
 		/* Запрос 15 последних записей данных*/
 		$sql = "SELECT * FROM `$table` ORDER BY `id` ASC LIMIT ".$limit;
-		$sesnsVal =$this->db->rowAll($sql);
+		$sensVal =$this->db->rowAll($sql);
 
 		/* Запись значений в массив с массивами параметров*/
 		foreach ($columnName as $name) {
-			foreach ($sesnsVal as $value) {
+			foreach ($sensVal as $value) {
 				if ($name == 'time'){
 					$controlParam[$name][] = $this->clock($value[$name]);	
 				} else {
@@ -61,14 +67,14 @@ class UserModel extends Model {
 	}
 
 
-	public function deviceParam(){
-
-		$sql = "SELECT * FROM `deviceParam` WHERE 1";
-		$deviceParam = $this->db->row($sql);
+	public function deviceParam($table){
+		$params = [
+			$table => $table,
+		];
+		$sql = "SELECT * FROM $table";
+		$deviceParam = $this->db->row($sql, $params);
 		//debug($deviceParam);
-		
-		return $deviceParam;
-		
+		return $deviceParam;	
 	}
 
 

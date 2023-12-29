@@ -15,9 +15,9 @@ class UserController extends Controller {
 
 	public function upageAction() {
 
-		$deviceParam = $this->model->deviceParam();
-
+		$deviceParam = $this->model->deviceParam('devStatus');
 		$controlParam = $this->model->controlParam(15);
+
 		$vars = [
 			'devStatus' => $deviceParam,
 			'controlParam' => $controlParam,

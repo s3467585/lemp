@@ -47,6 +47,11 @@ class MainController extends Controller {
 	
 	/* обработка события на странице авторизации */
 	public function signinAction() {
+		/*if (isset($_SESSION['autorize'])) {
+			$this->view->message('error', 'Вы уже вторизованы как '.$_SESSION['autorize']['login']);
+			return false;
+		}*/
+
 		if (!empty($_POST)) {
 
 			if (!$this->signinValidate($_POST)) {
@@ -64,7 +69,9 @@ class MainController extends Controller {
 				$this->view->location('sup/administration');		 		
 		 	} 
 
-		 	$this->view->location('upage');		 	
+		 	if (isset($_SESSION['autorize'])){
+				$this->view->location('upage');	
+		 	} 	 	
 	 	}	
 
 		$this->view->render('Авторизация');
@@ -81,6 +88,20 @@ class MainController extends Controller {
 				return false;
 			} 
 
+			if ($this->model->signin($_POST['login'])) {
+				
+				$this->view->message('saccess', 'Такой пользователь уже существует');
+
+				if (isset($_SESSION['admin'])){
+					$this->view->location('sup/administration');		 		
+		 		} 
+
+		 		if (isset($_SESSION['autorize'])){
+					$this->view->location('upage');	
+		 		} 	 
+				return false;
+		 	}
+
 			if (!$this->model->signup($_POST)) {
 				$this->view->message('error', $this->model->error);
 				return false;
@@ -88,7 +109,8 @@ class MainController extends Controller {
 			//$this->view->message('saccess', 'Регистрация прошла успешно.');
 
 			$this->view->location('upage');		 	
-		}		
+		}
+
 		$this->view->render('Регистарция');
 	}
 

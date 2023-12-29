@@ -26,8 +26,8 @@
                                     <?php endforeach; ?>
                                    
                                     <td>
-                                        <a href="/sup/user_activation/<?php echo $user['id']; ?>" class="btn btn-primary" id="link">Активировать</a>
-                                        <a href="/sup/deluser/<?php echo $user['id']; ?>" class="btn btn-danger">Удалить</a>
+                                        <a href="/sup/useractivation/<?php echo $user['id']; ?>" class="btn btn-primary" id="link">Активировать</a>
+                                        <a href="/sup/delluser/<?php echo $user['id']; ?>" class="btn btn-danger">Отвязать</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
