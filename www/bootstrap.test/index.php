@@ -1,22 +1,14 @@
 <?php 
 
 session_start ();
-	
-require 'application/lib/Dev.php';
-require 'application/lib/Functions.php';
 
-use application\core\Router;
-use application\lib\Db;
+require "app/config/init.php";
 
-spl_autoload_register(function($class) {
-    $path = str_replace ('\\', '/', $class.'.php');
-    if (file_exists($path)){
-    	 require $path;
-    }
-    //include 'classes/' . $class . '.class.php';
-});
+use app\core\Router;
+use app\lib\Database;
 
 
+DEBUG ? ini_set('display_errors', 1) : ini_set('display_errors', 0);
 
 $router = new Router;
 $router-> run();	
