@@ -26,7 +26,7 @@ class View {
 			ob_start();
 			require $path;                                                
 			$content = ob_get_clean();		// Наполнение контентом странцы 
-			require 'app/views/layouts/'.$this->layout.'.php';	// Вывод общего шаблона для старниц
+			require 'app/views/layouts/'.$this->layout.'.layout.php';	// Вывод общего шаблона для старниц
 		} else {
 			echo 'Вид не найден: '. $this->path;
 		}

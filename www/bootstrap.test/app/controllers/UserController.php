@@ -15,23 +15,23 @@ class UserController extends Controller {
 
 	public function upageAction() {
 
-		$deviceParam = $this->model->deviceParam('devStatus');
+		$deviceStatus = $this->model->deviceStatus('devStatus');
 		$controlParam = $this->model->controlParam(15);
 
 		$vars = [
-			'devStatus' => $deviceParam,
+			'devStatus' => $deviceStatus,
 			'controlParam' => $controlParam,
 		];
-		//debug($vars);
+		//d($vars);
 		$this->view->render('UPage', $vars);
 	}
 
 	public function usettingsAction() {		
-		$deviceParam = $this->model->deviceParam();
+		$deviceStatus = $this->model->deviceStatus();
 
 		$controlParam = $this->model->controlParam(15);
 		$vars = [
-			'devStatus' => $deviceParam,
+			'devStatus' => $deviceStatus,
 			'controlParam' => $controlParam,
 		];
 		//debug($vars);

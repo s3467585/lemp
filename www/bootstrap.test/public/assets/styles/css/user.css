@@ -116,7 +116,7 @@ footer {
  .wrapper .section .container{
     margin: 30px;
     background: #fff;
-    padding: 50px;
+    padding: 25px;
     line-height: 28px;
 }
 
@@ -127,4 +127,32 @@ body.active .wrapper .sidebar{
 body.active .wrapper .section{
     margin-left: 0;
     width: 100%;
+}
+
+.dev {
+    display: grid;
+    grid-template-columns: auto 1fr;
+   // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    flex-wrap: wrap;
+    flex-grow: 1;
+    gap: 10px;
+}
+
+.dev-stat{
+    display: flex;
+    flex-direction: column;
+}
+
+.dev-stat div p {
+    white-space: nowrap
+}
+
+.dev-chart{
+    
+
+}
+
+#myChart{
+  //  width: 100%;
+  //  min-height: 300px;
 }

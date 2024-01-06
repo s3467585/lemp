@@ -67,14 +67,14 @@ class UserModel extends Model {
 	}
 
 
-	public function deviceParam($table){
+	public function deviceStatus($table){
 		$params = [
 			$table => $table,
 		];
 		$sql = "SELECT * FROM $table";
-		$deviceParam = $this->db->row($sql, $params);
-		//debug($deviceParam);
-		return $deviceParam;	
+		$deviceStatus = $this->db->row($sql, $params);
+		//d($deviceStatus);
+		return $deviceStatus;	
 	}
 
 
