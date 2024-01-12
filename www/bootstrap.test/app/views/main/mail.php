@@ -1,40 +1,34 @@
-<header class="masthead">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <div class="page-heading">
-                    <h1>Напишите мне</h1>
-                    <span class="subheading">я постараюсь ответить в течении 24 часов</span>
-                </div>
+<!-- Форма mail -->
+<div class="modal modal-sheet position-static d-block" tabindex="-1" role="dialog" id="Signin">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header align-self-center border-bottom-0">
+                <h3 class="fw-bold mb-0 fs-2 text-center">Написать письмо</h3>
             </div>
-        </div>
-    </div>
-</header>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-            <form action="/mail" method="post">
-                <div class="control-group">
-                    <div class="form-group floating-label-form-group controls">
-                        <p><input type="text" class="form-control" name="name" placeholder="Имя"></p>
+
+            <div class="modal-body p-5 pt-0">
+                <form action="/mail" method="post">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><span class="icon"><i class="fa-solid fa-right-to-bracket"></i></span></span>
+                        <div class="form-floating">
+                            <input type="text" class="form-control rounded-end-3" placeholder="Имя" name="name" id="name" autocomplete = "name" autofocus="autofocus">
+                            <label for="name">Имя</label>
+                        </div>
                     </div>
-                </div>
-                <div class="control-group">
-                    <div class="form-group floating-label-form-group controls">
-                        <p><input type="email" class="form-control" name="email" placeholder="E-mail"></p>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><span class="icon"><i class="fa-solid fa-key"></i></i></span></span>
+                        <div class="form-floating">
+                            <input type="email" class="form-control rounded-end-3" placeholder="E-mail" name="email" id="email" autocomplete ="email">
+                            <label for="login">E-mail</label>
+                        </div>
                     </div>
-                </div>
-                <div class="control-group">
-                    <div class="form-group floating-label-form-group controls">
-                        <p><textarea rows="5" class="form-control" name="text" placeholder="Сообщение"></textarea></p>
-                    </div>
-                </div>
-                <br>
-                <div id="success"></div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-secondary" id="sendMessageButton">Отправить</button>
-                </div>
-            </form>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Сообщение" name="message" id="message" style="height: 100px"></textarea>
+                        <label for="message">Сообщение</label>
+                    </div>                    
+                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Отправить</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
