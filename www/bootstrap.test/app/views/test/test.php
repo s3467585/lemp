@@ -1,3 +1,4 @@
+
 <div class="container">
-    <?php debug($_SESSION) ?>             
+    <?php d($_SESSION) ?>             
 </div>

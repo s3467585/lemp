@@ -3,17 +3,17 @@
         <div class="card mb-3">
             <div class="card-header">Устройства</div>
             <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-4">
+                <div class="table-responsive">
                     <?php if (empty($devices)): ?>
                         <p>Устройства не найдены</p>
                     <?php else: ?>
                         <table class="table">
-                           <thead>
+                           <thead class="table-dark">
                                 <tr>
                                     <?php foreach (array_keys($devices[0]) as $array_keys): ?>
                                         <th scope="col"><?php echo($array_keys); ?></th>
                                     <?php endforeach; ?>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,7 +34,6 @@
                         </table>
                     <!-- <?php echo $pagination; ?> -->
                     <?php endif; ?>
-                    </div>
                 </div>
             </div>
         </div>

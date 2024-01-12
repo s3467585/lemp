@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html class="page" lang="ru">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -69,10 +69,8 @@
         <?php endif; ?>
             
             <!-- Main -->
-            <main class="bg-Light">
-                <div class="">          
-                    <?php echo $content;?>
-                </div>
+            <main class="bg-Light">         
+                <?php echo $content;?>
             </main>
     
         <?php if ($this->route['action'] != 'signin'): ?>

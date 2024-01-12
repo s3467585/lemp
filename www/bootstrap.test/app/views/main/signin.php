@@ -19,7 +19,7 @@
 					<button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Вход</button>
 					<hr class="my-4">
 					<div class="text-center">
-						<small class="text-body-secondary align-self-center">У вас нет аккаунта? - <a href="/signup">зарегистрируйтесь</a></small>
+						<small class="text-body-secondary align-self-center">У вас нет аккаунта? - <a class="text-body-secondary" href="/signup">зарегистрируйтесь</a></small>
 						<div class="form_massege">
 							<?php $message; ?> 
 						</div>	

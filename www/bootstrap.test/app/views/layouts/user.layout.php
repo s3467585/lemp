@@ -8,6 +8,7 @@
     <!-- Llink icons -->
     <link rel="icon" href="/public/assets/assets/img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="/public/assets/assets/img/apple-touch-icon.png" />
+    <!-- link bootstrap -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
     <!-- link CSS -->
     <link href="/public/assets/styles/fontawesome/css/all.min.css" rel="stylesheet">
@@ -71,13 +72,13 @@
             <!--menu item-->
             <ul>
                 <li>
-                    <a href="#" class="active">
+                    <a href="/" >
                         <span class="icon"><i class="fas fa-home"></i></span>
                         <span class="item">Home</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#"  class="active">
                         <span class="icon"><i class="fas fa-desktop"></i></span>
                         <span class="item">My Dashboard</span>
                     </a>
@@ -124,11 +125,16 @@
                         <span class="item">Настройки</span>
                     </a>
                 </li>
+                <li>
+                    <a href="logout">
+                        <span class="icon"><i class="fas fa-sign-out"></i></span>
+                        <span class="item">Выход</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
-    <script>
-    </script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
 </body>
 
 </html>

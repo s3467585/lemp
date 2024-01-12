@@ -28,7 +28,7 @@ class ApiModel extends Model {
 			'json' => $json,
 		];
 		
-		debug($params);
+		//d($params);
 
 		$sql = "UPDATE devStatus SET json = :json WHERE devStatus.devName = 0";
 
