@@ -83,7 +83,7 @@ abstract class Controller {
 	}
 
 	public function signupValidate($post) {
-		if (!$this->len($_POST['full_name'], 2, 30)) {
+		if (!$this->len($post['full_name'], 2, 30)) {
 				$this->view->message('error', 'Имя должно содержать от 2 до 30 символов');
 				return false;
 			} elseif (!$this->len($post['login'], 2, 20)) {

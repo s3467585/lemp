@@ -19,11 +19,11 @@ use PDO;
  		$this->db = new Database;
  	}
 
-/* Функция авторизации где $param это Логин */
-function signin($param) {
+/* Функция авторизации где $login это Логин */
+function signin($login) {
 
 	// проверим количество записей с указанным логином
-	$count = $this->db->rowCount('users', 'login', $param);
+	$count = $this->db->rowCount('users', 'login', $login);
 	
 	if ($count['num'] == 0 ) {
 		$this->error = 'Логин не найден';
@@ -32,13 +32,13 @@ function signin($param) {
 	
 	// заполняем данными пользователя из базы в переменную 
 	
-	$param = [
-		'login' => $param,
+	$login = [
+		'login' => $login,
 	];
 
 	$sql = 'SELECT * FROM users WHERE login = :login';
 
-	$user = $this->db->row($sql, $param);
+	$user = $this->db->row($sql, $login);
 	
 	// Проверка пустой записи
 		if ($user['login'] == '') {
@@ -94,13 +94,13 @@ function signin($param) {
 
 	
 
-	/* Создание нового пользователя в базе даных принимает массив $params с ключами full_name, login, email, password, creation_time*/
+	/* Создание нового пользователя в базе даных принимает массив $logins с ключами full_name, login, email, password, creation_time*/
 
-	public function createUser($params){
+	public function createUser($logins){
 		  	
 		$sql = "INSERT INTO users (full_name, login, email, password, creation_time) VALUES (:full_name, :login, :email, :password, :creation_time)";
 		
-		if (!$this->db->query($sql, $params)){
+		if (!$this->db->query($sql, $logins)){
 			$this->error = 'Ошибка в БД при создания учётной записи.';
 			return false;
 		} 
@@ -112,23 +112,23 @@ function signin($param) {
 
 	/* Запись времени по id в БД*/
 	public function authTime($id) {
-		$params = [
+		$logins = [
 			'id' => $id,
 		];
 		$sql = "UPDATE `users` SET `auth_time` = ".time()." WHERE `users`.`id` = :id";
-		$this->db->query($sql, $params);
+		$this->db->query($sql, $logins);
 		return true;
 	}
 
 	/* Заполенение массива именами колонок таблицы*/
 	public function columnName($tableName){
-		$params = [
+		$logins = [
 			'TABLE_NAME' => $tableName,
 		];
 
 		$sql = "SELECT COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = :TABLE_NAME";
 
-		$columnName = $this->db->rowAll($sql, $params);
+		$columnName = $this->db->rowAll($sql, $logins);
 
 		$res = [];
 		foreach ($columnName as $value){

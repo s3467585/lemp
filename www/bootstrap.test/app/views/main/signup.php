@@ -1,9 +1,8 @@
 <!-- Форма регистрации -->
-<!-- Форма авторизации -->
 <div class="modal modal-sheet position-static d-block" tabindex="-1" role="dialog" id="Signin">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content rounded-4 shadow">
-			<div class="modal-header align-self-center p-5 pb-4 border-bottom-0">
+			<div class="modal-header align-self-center">
 				<h3 class="fw-bold mb-0 fs-2 text-center">Регистрация</h3>
 			</div>
 

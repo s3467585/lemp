@@ -8,6 +8,8 @@ class View {
 	public $path;
 	public $route;
 	public $layout = 'default';
+	public $error;
+	public $message;
 
 	public function __construct($route){
 

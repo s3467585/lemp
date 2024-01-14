@@ -66,6 +66,7 @@ class MainController extends Controller {
 		 	//$this->view->message('saccess', 'Авторизация прошла успешно.');
 		 	
 		 	if (isset($_SESSION['admin'])){
+
 				$this->view->location('sup/administration');		 		
 		 	} 
 
@@ -83,14 +84,14 @@ class MainController extends Controller {
 	public function signupAction() {
 		if (!empty($_POST)) {
 
+			// валидация полей
 			if (!$this->signupValidate($_POST)) {
 				$this->view->message('error', $this->error);
 				return false;
 			} 
 
+			//  
 			if ($this->model->signin($_POST['login'])) {
-				
-				$this->view->message('saccess', 'Такой пользователь уже существует');
 
 				if (isset($_SESSION['admin'])){
 					$this->view->location('sup/administration');		 		
