@@ -20,7 +20,7 @@
 	<title><?php echo $title; ?></title>
 </head>
 
-<body class="bg-primary">	
+<body class="">	
 	<div class="container-xxl px-0">
 		<!-- Navbar -->
 		<nav class="navbar navbar-expand-sm text-white rounded-bottom rounded-30 shadow">
