@@ -20,7 +20,7 @@
 	<title><?php echo $title; ?></title>
 </head>
 
-<body class="">	
+<body class="content">	
 	<div class="container-xxl px-0">
 		<!-- Navbar -->
 		<nav class="navbar navbar-expand-sm text-white rounded-bottom rounded-30 shadow">
@@ -46,18 +46,6 @@
 	    		</div>
 	  		</div>
 		</nav>
-		<!-- Header -->	
-		<!-- <header class="d-flex flex-column flex-md-row align-items-center py-2 mb-4 border-bottom">
-      		<a  href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
-      			<img class ="mx-auto d-block" height="50px" src="/public/assets/img/logo.svg" >
-	 			
-      		</a>
-		    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-			    <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="/">Главная</a>
-			    <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Подробности</a>
-			    <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Связаться</a>    
-			</nav>
-	    </header>	 -->
 		<!-- Main --> 
 		<main class=""> 
 			<?php echo $content;?>
