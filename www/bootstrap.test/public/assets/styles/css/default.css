@@ -1,45 +1,35 @@
-:root{
-  --body-bg: #123;
-  --nav-bg: rgb(69,92,115);
-}
-
-* {
-  box-sizing: border-box;
-}
+@import "vars.css";
 
 
-html, body {
-  min-height: 100%;
-   //width: 100%;
-   //height: 100%;
-   font-family: system-ui;
-}
+
+
+
 
 body {
-  display: flex;
-  flex-direction: column;
-  flex-flow: row nowrap;
-  background: var(--body-bg);
-  background-image: url("/public/assets/img/background.jpg");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  //display: flex;
+  //flex-direction: column;
+  //flex-flow: row nowrap;
+  //background: var(--body-bg);
+  //background-image: url("/public/assets/img/background.jpg");
+  //background-size: 100% 100%;
+  //background-repeat: no-repeat;
 }
 
-nav, footer {
-  //background-color: #1e57777a;
-  background-color: var(--nav-bg);
+nav {
+  background-color: #1e57777a;
+  //background-color: var(--nav-bg);
   color: #fff;
 }
 
-.content {
-  flex: 1 0 auto;
-  justify-content: space-around;
-}
 
-footer {
-  margin: 0, auto;
-}
+
+
 
 a:hover {
   color: rgba(0, 0, 0, 0.2);
 }
+
+
+
+
+
