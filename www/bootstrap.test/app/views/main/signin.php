@@ -50,25 +50,25 @@
 	<div id="login">
 			<h1>Добро пожаловать!</h1>
 
-			<form action="/" method="post">
+			<form form action="/signin" method="POST">
 
 				<div class="field-wrap">
-					<label>
-						E-mail<span class="req">*</span>
-					</label>
-					<input type="email" required autocomplete="off" />
+					<label>E-mail<span class="req">*</span></label>
+					<input type="text" name="login" id="login" autocomplete="login" autofocus="autofocus">
+					<!-- <input type="email" name="email" id="email" autocomplete="email"> -->
+					
 				</div>
 
 				<div class="field-wrap">
 					<label>
 						Пароль<span class="req">*</span>
 					</label>
-					<input type="password" required autocomplete="off" />
+					<input type="password" name="password" id="password" autocomplete="off">
 				</div>
 
 				<!-- <p class="forgot"><a href="#">Forgot Password?</a></p> -->
 
-				<button class="button button-block" />Войти</button>
+				<button class="button button-block" type="submit">Войти</button>
 
 			</form>
 
@@ -77,42 +77,37 @@
 	
 	<div id="signup">
 			<h1>Регистрация</h1>
-			<form action="/" method="post">
+			<form form action="/signup" method="POST">
 
 				<div class="top-row">
 					<div class="field-wrap">
-						<label>
-						Имя<span class="req">*</span>
+						<label>Ф.И.О<span class="req">*</span>
 						</label>
-						<input type="text" required autocomplete="off" />
+						<input type="text" name="full_name" id="full_name" autocomplete="full_name" autofocus="autofocus">
 					</div>
 
 					<div class="field-wrap">
-						<label>
-							Фамилия<span class="req">*</span>
+						<label>Логин<span class="req">*</span>
 						</label>
-						<input type="text" required autocomplete="off" />
+						<input type="text" name="login" id="login" autocomplete="login">
 					</div>
 				</div>
 
 				<div class="field-wrap">
-					<label>
-						Email<span class="req">*</span>
+					<label>E-mail<span class="req">*</span>
 					</label>
-					<input type="email" required autocomplete="off" />
+					<input type="email" name="email" id="email" autocomplete="email">
 				</div>
 
 				<div class="field-wrap">
-					<label>
-						Пароль<span class="req">*</span>
+					<label>Пароль<span class="req">*</span>
 					</label>
-					<input type="password" required autocomplete="off" />
+					<input type="password" name="password" id="password" autocomplete="off">
 				</div>
 				<div class="field-wrap">
-					<label>
-						Подтвердите пароль<span class="req">*</span>
+					<label>Подтвердите пароль<span class="req">*</span>
 					</label>
-					<input type="password" required autocomplete="off" />
+					<input type="password" name="password_confirm" id="password_confirm" autocomplete="off">
 				</div>
 
 				<button type="submit" class="button button-block" />Зарегистрироваться</button>

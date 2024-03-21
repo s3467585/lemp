@@ -1,33 +1,6 @@
-@import "vars.css";
 
 
 
-
-
-
-body {
-  //display: flex;
-  //flex-direction: column;
-  //flex-flow: row nowrap;
-  //background: var(--body-bg);
-  //background-image: url("/public/assets/img/background.jpg");
-  //background-size: 100% 100%;
-  //background-repeat: no-repeat;
-}
-
-nav {
-  background-color: #1e57777a;
-  //background-color: var(--nav-bg);
-  color: #fff;
-}
-
-
-
-
-
-a:hover {
-  color: rgba(0, 0, 0, 0.2);
-}
 
 
 
