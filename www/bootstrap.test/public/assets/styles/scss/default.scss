@@ -1,12 +1,13 @@
 @import 'vars';
 @import 'reset';
 
-html, body {
-  height: 100%;  
-}
-
 html {
 	overflow-y: scroll; 
+  font-size: $font-size;
+}
+
+html, body {
+  height: 100%;  
 }
 
 body {
@@ -58,10 +59,11 @@ header {
 .header__wrapper{
   display: flex;
   flex-wrap: wrap;
+  gap: 0.5rem;
   justify-content: space-between;
   align-items: center;
   .header__logo{
-    padding-left: 1rem;
+    //padding-left: 1rem;
   }
   .nav ul {
     display: flex;

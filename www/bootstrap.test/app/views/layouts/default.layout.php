@@ -13,13 +13,14 @@
 
 	<!-- link css -->
 	<link href="/public/assets/styles/fontawesome/css/all.min.css" rel="stylesheet">
-	<link type="text/css" href="/public/assets/styles/css/default.css" rel="stylesheet">
 	<link type="text/css" href="/public/assets/styles/scss/default.css" rel="stylesheet">
+
 	<!-- link jqeru -->
 	<script type="text/javascript" src="/public/assets/lib/jquery/jquery.js"></script>
 	<script type="text/javascript" src="/public/assets/js/index.js"></script>
 	<script type="text/javascript" src="/public/assets/js/form.js"></script>
 	<script type="text/javascript" src="/public/assets/js/default.js"></script>
+
 	<!-- Title -->
 	<title><?php echo $title; ?></title>
 </head>
