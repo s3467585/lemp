@@ -1,11 +1,22 @@
-$font-size: 18 px;
+$font-size: 18px;
 $font-size-s: 10px;
 $font-size-m: 14px;
 $font-size-l: 20px;
 
+
 $body-bg: #c1bdba;
 $form-bg: #13232f;
+
 $white: #ffffff;
+
+/* Hower */
+$hower-color: #0c7db1;
+$hower-bg: #ffffff;
+
+/* SIDBAR */
+$sibar: rgb(5, 68, 104);
+$sibar-light: lighten($sibar,15%);
+$sibar-dark: darken($sibar,15%);
 
 $main: #1ab188;
 $main-light: lighten($main,5%);
@@ -18,3 +29,61 @@ $thin: 300;
 $normal: 400;
 $bold: 600;
 $br: 4px;
+
+$shadow: 0 4px 8px 0 rgba(0, 0, 0 , 0.08);
+
+
+
+/*TEST PAGE */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
+
+:root{
+    --color-side-bar: rgb(255, 255, 255);
+
+    --color-text: rgb(0, 0, 0);
+    --color-text-menu: rgb(134, 136, 144);
+
+    --color-menu-hover: rgb(238, 238, 238);
+    --color-menu-hover-text: rgb(0, 0, 0);
+
+    --color-boton: rgb(0, 0, 0);
+    --color-boton-text: rgb(255, 255, 255);
+
+    --color-line: rgb(180, 180, 180);
+
+    --color-switch-base: rgb(201, 202, 206);
+    --color-switch-circle: rgb(241, 241, 241);
+
+    --color-scroll: rgb(192, 192, 192);
+    --color-scroll-hover: rgb(134, 134, 134);
+
+    --color-main: rgb(225, 255, 255);
+}
+
+.dark-mode{
+    --color-side-bar:rgb(44,45,49);
+
+    --color-text:rgb(255,255,255);
+    --color-text-menu:rgb(110,110,117);
+
+    --color-menu-hover:rgb(0,0,0);
+    --color-menu-hover-text:rgb(238,238,238);
+
+    --color-boton:rgb(255,255,255);
+    --color-boton-text:rgb(0,0,0);
+
+    --color-linea:rgb(90,90,90);
+
+    --color-switch-base:rgb(39,205,64);
+    --color-switch-circle:rgb(255,255,255);
+
+    --color-scroll:rgb(68,69,74);
+    --color-scroll-hover:rgb(85,85,85);
+
+    --color-main: rgba(0, 69, 69);
+}
+
+
+
+$br: 2px solid red;

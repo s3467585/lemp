@@ -3,6 +3,7 @@
   text-decoration: none;
   margin: 0;
   padding: 0;
+  text-decoration: none;
 }
 
 *, *:before, *:after {
@@ -10,11 +11,15 @@
           box-sizing: border-box;
 }
 
-ol, ul {
+ol, ul, li {
   list-style: none;
 }
 
-img {
+a, img, i {
   display: block;
+}
+
+button {
+  border: none;
 }
 /*# sourceMappingURL=reset.css.map */
