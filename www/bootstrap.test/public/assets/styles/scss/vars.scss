@@ -30,7 +30,7 @@ $normal: 400;
 $bold: 600;
 $br: 4px;
 
-$shadow: 0 4px 8px 0 rgba(0, 0, 0 , 0.08);
+$shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.8);
 
 
 
@@ -59,6 +59,9 @@ $shadow: 0 4px 8px 0 rgba(0, 0, 0 , 0.08);
     --color-scroll-hover: rgb(134, 134, 134);
 
     --color-main: rgb(225, 255, 255);
+
+    --color-fine:#09aa39;
+    --color-danger: #aa0909;
 }
 
 .dark-mode{

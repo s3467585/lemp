@@ -16,8 +16,8 @@
 </head>
 
 
-
 <body class="fixed-nav sticky-footer bg-secondary">
+<?php var_dump($this->route['action'])?>
         <?php if ($this->route['action'] != 'signin'): ?>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
                 <a class="navbar-brand text-center" href="/sup/administration">АдминПанель</a>

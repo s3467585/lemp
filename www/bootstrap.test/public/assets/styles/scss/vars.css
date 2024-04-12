@@ -16,6 +16,8 @@
   --color-scroll: rgb(192, 192, 192);
   --color-scroll-hover: rgb(134, 134, 134);
   --color-main: rgb(225, 255, 255);
+  --color-fine:#09aa39;
+  --color-danger: #aa0909;
 }
 
 .dark-mode {

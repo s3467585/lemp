@@ -20,11 +20,7 @@
 
 <body>
 
-    <!-- MENU TOGLE small screens-->
-    <div class="menu-togle">
-        <i class="open fa-solid fa-bars"></i>
-        <i class="close fa-solid fa-xmark"></i>
-    </div>
+
 
     <!-- SIDE-BAR -->
     <div class="side-bar">
@@ -127,14 +123,14 @@
                         $user = $_SESSION['autorize'];
                     }
                 ?>
-                <img src="/public/assets/img/index-s.jpg" alt="">
-                <div class="user-info">
-                    <div class="user-data">
-                        <span class="side-bar-span name"><?php echo ($user['login']) ?></span>
-                        <span class="side-bar-span email"><?php echo ($user['email']) ?></span>
+                    <img src="/public/assets/img/index-s.jpg" alt="">
+                    <div class="user-info">
+                        <div class="user-data">
+                            <span class="side-bar-span name"><?php echo ($user['login']) ?></span>
+                            <span class="side-bar-span email"><?php echo ($user['email']) ?></span>
+                        </div>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>                    
                 <?php } ?>
             </div>
             <!-- LOGOFF -->
@@ -144,72 +140,50 @@
                     <span class="side-bar-span item">Выйти</span>
                 </a>
             </div>
-
         </div>
-
     </div>
 
 
     <main>
-        <?php echo $content; ?>
-
-        <?php echo ($user['email']) ?>
-
-        <h1>Contenido</h1>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti iure nam aliquid debitis voluptatum reiciendis reprehenderit minus, et sed hic suscipit facilis enim totam. Nesciunt eveniet velit modi voluptates temporibus?</p>
+        <div class="wrapper">
+            <div class="top-menu">
+                <!-- TIME IFO -->
+                <div class="time-info">
+                    <a href="https://time.is/Yekaterinburg" id="time_is_link" rel="nofollow"></a>
+                    <span id="Yekaterinburg_z44a"></span>
+                    <script src="//widget.time.is/ru.js"></script>
+                    <script>
+                        time_is_widget.init({
+                            Yekaterinburg_z44a: {
+                                template: "Время: TIME<br>Сегодня: DATE",
+                                date_format: "dayname daynum.monthnum.yy"
+                            }
+                        });
+                    </script>
+                </div>
+                <!-- MENU TOGLE small screens-->
+                <div class="menu-togle">
+                    <i class="open fa-solid fa-bars"></i>
+                    <i class="close fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            <!-- SECTION -->
+            <section>
+                <?php echo $content; ?>
+                <?php echo $content; ?>
+                <?php echo $content; ?>
+            </section>
+            <!-- FOOTER -->
+            <footer>
+                <!-- COPY -->
+                <div class="copy">
+                    <small>&copy; 2019-<?= date('Y'); ?> SovHome</small>
+                </div>
+            </footer>
+        </div>
     </main>
-
-
-
-
-
 
     <script type="text/javascript" src="/public/assets/js/user-page.js"></script>
 </body>
 
 </html>
-
-
-
-
-
-
-<!--profile image & text-->
-<!-- <div class="profile">
-                <?php if (isset($_SESSION['autorize']) or isset($_SESSION['admin'])) {
-                    if (isset($_SESSION['admin'])) {
-                        $user =  $_SESSION['admin'];
-                    } else {
-                        $user = $_SESSION['autorize'];
-                    }
-                ?>
-                    <img src="/public/assets/img/logo_1.png" alt="profile_picture">
-                    <h3><?php echo ($user['login']) ?></h3>
-                    <p><?php echo ($user['full_name']) ?></p>
-                    <p><?php echo ($user['email']) ?></p>
-                <?php } ?>
-            </div> -->
