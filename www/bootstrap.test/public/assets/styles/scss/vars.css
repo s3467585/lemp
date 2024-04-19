@@ -16,8 +16,10 @@
   --color-scroll: rgb(192, 192, 192);
   --color-scroll-hover: rgb(134, 134, 134);
   --color-main: rgb(225, 255, 255);
-  --color-fine:#09aa39;
-  --color-danger: #aa0909;
+  --color-text-success:rgb(9, 170, 57);
+  --color-text-danger: rgb(170, 9, 9);
+  --color-success:rgb(200, 227, 209);
+  --color-danger: rgb(240, 214, 214);
 }
 
 .dark-mode {
@@ -34,5 +36,13 @@
   --color-scroll:rgb(68,69,74);
   --color-scroll-hover:rgb(85,85,85);
   --color-main: rgba(0, 69, 69);
+}
+
+.text-success {
+  color: var(--color-text-success);
+}
+
+.text-danger {
+  color: var(--color-text-danger);
 }
 /*# sourceMappingURL=vars.css.map */

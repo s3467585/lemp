@@ -120,6 +120,10 @@ return [
 				'controller' => 'devices',
 				'action' => 'devstatus',
 			],
+	'devices/params' => [
+		'controller' => 'devices',
+		'action' => 'params',
+	],
 
 
 

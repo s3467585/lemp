@@ -21,9 +21,9 @@ class Database {
 			$this->db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION ); 
 
 		}  
-			catch(PDOException $e) {  
+		catch(PDOException $e) {  
 		    echo $e->getMessage();  
-		    file_put_contents('/app/lib/PDOErrors.txt', $e->getMessage(), FILE_APPEND);
+		    file_put_contents($_SERVER['DOCUMENT_ROOT'].'/app/lib/PDOErrors.txt', $e->getMessage(), FILE_APPEND);
 		}
 
 	}
@@ -59,8 +59,22 @@ class Database {
 
 	/* Возвращает массив, содержащий найденные записи последовательно при вызове или NUL если завершено*/
 	public function row($sql, $params = []) {
+		
 		$result = $this->query($sql, $params);
+
 		return $result->fetch(PDO::FETCH_ASSOC);
+	}
+
+	/* Возвращает массив, содержащий найденные записи последовательно при вызове или NUL если завершено*/
+	public function roww($sql, $params = []) {
+		$result = $this->query($sql, $params);
+
+		$result -> fetch(PDO::FETCH_ASSOC);
+
+		while ($res = $result->fetch()) {
+			
+			//d($res)	;
+		}
 	}
 
 	/* Возвращает конкретныю строку */
@@ -101,6 +115,7 @@ class Database {
 			$column => $val,
 		];
 		$sql = 'SELECT '.$column.' FROM '.$tableName.' WHERE '.$column.' = :'.$column.'';
+		//db($this->column($sql, $params));
 		return $this->column($sql, $params);
 	}
 
@@ -142,10 +157,10 @@ class Database {
 
 
 	public function test ($sql, $params = []){
-		debug($sql);
-		debug($params);
+		db($sql);
+		db($params);
 		$stmt = $this->db->prepare($sql);
-		debug($stmt);
+		db($stmt);
 		$stmt->execute($params);
 		return $stmt;
 	}

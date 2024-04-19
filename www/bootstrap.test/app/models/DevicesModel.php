@@ -10,8 +10,9 @@ use PDO;
  */
 class DevicesModel extends Model {
 	
-	/* Запись в базу данных при включении от устройства */
-	public function devstatus() {
+	/* Запись в базу данных о статусе устройства */
+	public function devStatus() {
+
 		$params = [
 			'devName' 		=> $_POST['devName'],
 			'ip' 			=> $_POST['ip'],
@@ -20,18 +21,26 @@ class DevicesModel extends Model {
 			'sysLoad' 		=> $_POST['sysLoad'],
 			'sendTime' 		=> time(),
 			'upTime' 		=> $_POST['upTime'],
-			'connectTime' 	=> $_POST['connectTime'],
 			'isntp'			=> $_POST['isntp'],
 		];
 
-		//debug($params);
+		//db($params);
+		//db($this->db->isColumnExist('devName', 'devStatus', $params['devName']));
 
-		// поиск записи устройства в БД
+		// поиск устройства в БД
 		if ($this->db->isColumnExist('devName', 'devStatus', $params['devName'])) {
-			// обновление записи
-			$sql = "UPDATE devStatus SET ip = :ip, mac = :mac, bssid = :bssid, sysLoad = :sysLoad, sendTime = :sendTime, upTime = :upTime, connectTime = :connectTime, isntp = :isntp WHERE devStatus.devName = :devName";			
-			if (!$this->db->query($sql, $params)){
 
+			// обновление записи
+			$sql = "UPDATE devStatus SET ip = :ip, mac = :mac, bssid = :bssid, sysLoad = :sysLoad, sendTime = :sendTime, upTime = :upTime, isntp = :isntp WHERE devStatus.devName = :devName";	
+
+			if ($_POST['connectTime'] != ''){
+
+				$params ['connectTime'] = $_POST['connectTime'];
+
+				$sql = "UPDATE devStatus SET ip = :ip, mac = :mac, bssid = :bssid, sysLoad = :sysLoad, sendTime = :sendTime, upTime = :upTime, connectTime = :connectTime, isntp = :isntp WHERE devStatus.devName = :devName";				
+			}
+		
+			if (!$this->db->query($sql, $params)){
 				$this->error = 'Ошибка обновления записи статуса устройства: '.$params['devName'].'';
 				return false;
 			}
@@ -51,19 +60,60 @@ class DevicesModel extends Model {
 
 
 	/* Запись в базу данных парамеров полученых от устройства */
-	public function post($params) {
+	public function devParams() {
 
-		$totalColimn = $this->db->colunmCount('stat_22', 'time');
+		$devName = [
+			'devName' 		=> $_POST['devName'],
+		];
 
-		if ($totalColimn >= 15) {
+		$params = [
+			'devName' 		=> $_POST['devName'],
+			'json'			=> $_POST['json'],
+			'sendTime'		=> time(),
+		];
 
-			$sql = "DELETE FROM `stat_22` ORDER BY `id` ASC LIMIT 1";
-			$this->db->query($sql);
+		//d($params);
+
+		/* Получаем пользователя которому принадлежит устройство */
+		$sql = "SELECT user FROM binding WHERE devName = :devName";
+		$user = $this->db->column($sql, $devName);
+		
+		$tableName = $this->tablPrefix.$user;
+		
+		if($user){
+
+			// запрашиваем количесво записей в таблице
+			//$totalColimn = $this->db->colunmCount($tableName, 'id');
+
+			$sql = "SELECT COUNT(id) FROM ".$tableName." WHERE devname = :devName";
+		
+			$totalColimn = $this->db->column($sql, $devName);
+			
+
+			d($totalColimn);
+			// Удаление последней записи при привышении заданного количества
+			if ($totalColimn >= 15) {
+
+				$sql = "DELETE FROM ".$tableName." WHERE devname = :devName ORDER BY `id` ASC LIMIT 1";
+				$this->db->query($sql);
+			}
+
+			/* если устройство привязано к пользователю */
+			$sql = "INSERT INTO ".$tableName." (devName, json, sendTime) VALUES (:devName, :json, :sendTime)";
+			
+			if (!$this->db->query($sql, $params)){
+				
+				$this->error = 'Ошибка записи параметров устройства: '.$params['devName'].'';
+				return false;	
+			}
+
+		} else {
+
+			$this->error = 'Ошибка, пользователь не привязан к  устройству: '.$params['devName'].'';
+			return false;
 		}
 
-		$sql = "INSERT INTO `stat_22`(temp0, temp1, temp2, time) VALUES (:temp, :hum, :pres, :time)";
-		
-		$this->db->query($sql, $params);
+		return true;
 	}
 
 }

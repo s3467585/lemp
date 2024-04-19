@@ -5,11 +5,13 @@ return [
 	'all' => [
 		'post',
 		'devstatus',
+		'params',
 	],
 
 	'autorize' => [
 		'post',
-		'devstatus',		
+		'devstatus',
+		'params',		
 	],
 
 	'quest' => [

@@ -15,18 +15,32 @@ class UserController extends Controller {
 
 	public function upageAction() {
 
-		$deviceStatus = $this->model->deviceStatus('devStatus');
-		$controlParam = $this->model->controlParam(15);
+		$login = $_SESSION['autorize']['login'];
+		
+		// имена привязаныз к пользователю устройств
+		$devNames = $this->model->devBinding($login);
+		
+		// данные о состоянии контроллера
+		$devStatus = $this->model->devStatus('devStatus');
+		
+		// даные о параметрах датчиков
+		$devParam = $this->model->devParam($devNames, 15);
 
 		$vars = [
-			'devStatus' => $deviceStatus,
-			'controlParam' => $controlParam,
+			'devNames' => $devNames,
+			'devStatus' => $devStatus,
+			'devParam' => $devParam,
 		];
+
+
+		
+
+		
 		//d($vars);
 		$this->view->render('UPage', $vars);
 	}
 
-	public function usettingsAction() {		
+	public function usertingsAction() {		
 		$deviceStatus = $this->model->deviceStatus();
 
 		$controlParam = $this->model->controlParam(15);
@@ -48,8 +62,9 @@ class UserController extends Controller {
 	}	
 
 
-	public function test(){
+	public function testAction(){
 		echo ('<h1>TEST</h1>');
+
 	}
 
 

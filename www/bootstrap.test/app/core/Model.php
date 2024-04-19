@@ -13,7 +13,7 @@ use PDO;
  	public $db;
  	public $error;
  	public $message;
- 	public $tablPrefix = "stat_";
+ 	public $tablPrefix = "params_";
 
  	function __construct() {
  		$this->db = new Database;

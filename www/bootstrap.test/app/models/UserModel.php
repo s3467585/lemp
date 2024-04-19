@@ -10,16 +10,14 @@ use app\core\Model;
  */
 class UserModel extends Model {
 
-	public function upage(){
 
-		
+	public function upage(){
 	}
 
 	public function usettings(){
 		
 	}
 	
-
 
 	public function getNews() {
 
@@ -28,58 +26,111 @@ class UserModel extends Model {
 		return $result;
 	}
 
+	// запрос устройств привязанных к пользователю
+	public function devBinding ($Login){
+		$sql = "SELECT devName FROM binding WHERE user = $Login";
 
+		$devBinding = $this->db->rowAll($sql);
+		$devNames = [];
 
+		foreach ($devBinding as $key => $value) {
+			
+			foreach ($value as $key => $value){
 
-
-	public function controlParam($limit){
+				$devNames [] = $value;	
+    		}
+		}
 		
-		$controlParam = [];
-		
-		$table = $this->tablPrefix.$_SESSION['autorize']['login'];
+		//d($devName);
+		return $devNames;
+	}
 
-		if (!$this->db->isTableExist($table)) {
-			$this->error = 'Таблица '.$table.' не найдена';
+	// получение параметров и БД для устройуств пользователя
+	public function devParam($devNames, $limit){
+
+		$userDevTable = $this->tablPrefix.$_SESSION['autorize']['login'];
+		
+		$devParam = [];
+
+		// проверка наличия таблицы с данными пользователя
+		if (!$this->db->isTableExist($userDevTable)) {
+			$this->error = 'Таблица '.$userDevTable.' не найдена';
 			return false;
 		}
 
 		/* Запрос имен в таблице контолируемых параметров*/
-		$columnName = $this->columnName($table);
-		//debug($columnName);
+		$columnName = $this->columnName($userDevTable);
+		//d($columnName);
+
+		
+
+		foreach ($devNames as $key => $value) {
+			d($value);
+			
+			/* Запрос 15 последних записей данных*/
+			$sql = "SELECT * FROM `$userDevTable` WHERE devName = '$value' ORDER BY `id` ASC LIMIT ".$limit;
+			
+			$sensVal =$this->db->rowAll($sql);
+
+			$t = $this->changeArr($sensVal, $columnName);
+
+			$devParam['dfwffr'] = $t;
+
+			d($devParam);
+		}
+
+		
+
 
 		/* Запрос 15 последних записей данных*/
-		$sql = "SELECT * FROM `$table` ORDER BY `id` ASC LIMIT ".$limit;
+		/*$sql = "SELECT * FROM `$userDevTable` ORDER BY `id` ASC LIMIT ".$limit;
 		$sensVal =$this->db->rowAll($sql);
 
 		/* Запись значений в массив с массивами параметров*/
 		foreach ($columnName as $name) {
 			foreach ($sensVal as $value) {
-				if ($name == 'time'){
-					$controlParam[$name][] = $this->clock($value[$name]);	
+				if ($name == 'sendtime'){
+					$devParam[$name][] = $this->clock($value[$name]);	
 				} else {
-					$controlParam[$name][] = $value[$name];
+					$devParam[$name][] = $value[$name];
 				}
-				
 			}
-		}
-		//debug($controlParam);
-		return $controlParam;
+		}*/
+		//d($devParam);
+		return $devParam;
 	}
 
 
-	public function deviceStatus($table){
+	public function devStatus($table){
 		$params = [
 			$table => $table,
 		];
 		$sql = "SELECT * FROM $table";
-		$deviceStatus = $this->db->row($sql, $params);
-		//d($deviceStatus);
-		return $deviceStatus;	
+		$devStatus = $this->db->row($sql, $params);
+		///d($deviceStatus);
+		return $devStatus;	
 	}
 
 
 
+	function changeArr($arr, $columnName) {
 
+		$res = [];
+
+		/* Запись значений в массив с массивами параметров*/
+		foreach ($columnName as $name) {
+			//d($columnName);
+			foreach ($arr as $value) {
+				if ($name == 'sendtime'){
+					$res[$name][] = $this->clock($value[$name]);	
+				} else {
+					$res[$name][] = $value[$name];
+				}
+			}
+		}
+		//d($devParam);
+		return $res;
+	}
 
 
 

@@ -14,6 +14,8 @@
     <link type="text/css" href="/public/assets/styles/scss/user-page.css" rel="stylesheet">
     <!-- Link JS -->
     <script type="text/javascript" src="/public/assets/lib/jquery/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!--     <script type="text/javascript" src="/public/assets/js/form.js"></script> -->
     <title><?php echo $title; ?></title>
 </head>
@@ -169,8 +171,6 @@
             </div>
             <!-- SECTION -->
             <section>
-                <?php echo $content; ?>
-                <?php echo $content; ?>
                 <?php echo $content; ?>
             </section>
             <!-- FOOTER -->
