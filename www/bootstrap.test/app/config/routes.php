@@ -103,7 +103,7 @@ return [
 			'controller' => 'user',
 			'action' => 'logout',
 		],
-	'usettings' => [
+	'usertings' => [
 			'controller' => 'user',
 			'action' => 'usettings',
 		],

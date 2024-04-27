@@ -16,7 +16,8 @@ function int($int) {
 
 /* Функция защиты от нежелательных действий */
 function protect($text) {
-	return trim(mysqli_real_escape_string($connect, htmlspecialchars($text, ENT_QUOTES, 'utf-8')));
+	//return trim(mysqli_real_escape_string($connect, htmlspecialchars($text, ENT_QUOTES, 'utf-8')));
+	return trim(htmlspecialchars($text, ENT_QUOTES, 'utf-8'));
 }
 
 /* Функция отображения времени */

@@ -8,6 +8,12 @@ use app\core\Controller;
 
 class UserController extends Controller {
 
+	public $devBindNames = [];
+	public $userDevStatus =[];
+	public $userDevSensors =[];
+	public $userDevParam =[];
+
+
 	public function __construct($route){
 		parent::__construct($route);
 		$this->view->layout = 'user';
@@ -16,31 +22,65 @@ class UserController extends Controller {
 	public function upageAction() {
 
 		$login = $_SESSION['autorize']['login'];
+		$devStatusTable = 'devStatus';
 		
-		// имена привязаныз к пользователю устройств
-		$devNames = $this->model->devBinding($login);
+		// имена привязаных к пользователю устройств
+		$this->devBindNames = $this->model->devBinding($login);
+
+		// заполняем массив служебной информацией от устройств привязанных к пользователю
+		foreach ($this->devBindNames as $key => $devBindName) {			
+			$this->userDevStatus[$devBindName] = $this->model->userDevStatus($devStatusTable, $devBindName);	
+		}
 		
-		// данные о состоянии контроллера
-		$devStatus = $this->model->devStatus('devStatus');
-		
-		// даные о параметрах датчиков
-		$devParam = $this->model->devParam($devNames, 15);
+		// заполняем массив датчиками и их данными, от устройств привязанных к пользователю
+		foreach ($this->devBindNames as $key => $devBindName) {			
+			
+			$this->userDevParam[$devBindName] = $this->model->userDevParam($login, $devBindName, 15);
+			
+			if (isset($this->userDevParam[$devBindName]['json'])) {
+				
+				$jsons = $this->userDevParam[$devBindName]['json'];
+
+				$userDevParam = [];
+
+				foreach ($jsons as $key => $json) {
+					
+					$arr = (json_decode($json));
+					
+					//d($arr);
+
+					foreach ($arr as $devSensor => $devSensorVal) {
+
+						//d($devSensor);
+
+						$userDevParam[$devSensor][] = $devSensorVal;
+						//d($devSensor);
+						//d($devSensorVal);
+					}					
+				}
+
+				foreach ($userDevParam as $devSensors => $value) {
+					
+					$this->userDevSensors[$devBindName][] = $devSensors;
+				}
+
+				$this->userDevParam[$devBindName]['sensors'] = $userDevParam;
+			}
+		}
 
 		$vars = [
-			'devNames' => $devNames,
-			'devStatus' => $devStatus,
-			'devParam' => $devParam,
+			'devBindNames' => $this->devBindNames,
+			'userDevStatus' => $this->userDevStatus,
+			'userDevSensors' => $this->userDevSensors,
+			'userDevParam' => $this->userDevParam,
 		];
 
-
-		
-
-		
+	
 		//d($vars);
 		$this->view->render('UPage', $vars);
 	}
 
-	public function usertingsAction() {		
+	/*public function usertingsAction() {		
 		$deviceStatus = $this->model->deviceStatus();
 
 		$controlParam = $this->model->controlParam(15);
@@ -50,7 +90,9 @@ class UserController extends Controller {
 		];
 		//debug($vars);
 		$this->view->render('USettings', $vars);
-	}
+	}*/
+
+	
 
 	public function logoutAction() {
 		if (isset($_SESSION['autorize'])){

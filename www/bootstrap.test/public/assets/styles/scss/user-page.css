@@ -539,7 +539,6 @@ main .wrapper section .cards .card {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  min-height: 350px;
   gap: 5px;
   padding: 10px 15px;
   overflow: hidden;
@@ -612,9 +611,9 @@ main .wrapper section .cards .card .dev .dev-stat > div i {
 }
 
 main .wrapper section .cards .card .dev .dev-chart {
-  border: 2px solid red;
   width: 100%;
   height: 100%;
+  min-height: 200px;
   border-radius: 10px;
 }
 

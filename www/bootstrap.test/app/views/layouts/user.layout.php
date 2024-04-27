@@ -15,6 +15,7 @@
     <!-- Link JS -->
     <script type="text/javascript" src="/public/assets/lib/jquery/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 
     <!--     <script type="text/javascript" src="/public/assets/js/form.js"></script> -->
     <title><?php echo $title; ?></title>

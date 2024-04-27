@@ -31,26 +31,43 @@ class UserModel extends Model {
 		$sql = "SELECT devName FROM binding WHERE user = $Login";
 
 		$devBinding = $this->db->rowAll($sql);
-		$devNames = [];
+		$devBindNames = [];
 
 		foreach ($devBinding as $key => $value) {
 			
 			foreach ($value as $key => $value){
 
-				$devNames [] = $value;	
+				$devBindNames [] = $value;	
     		}
 		}
 		
-		//d($devName);
-		return $devNames;
+		//d($devBindNames);
+		return $devBindNames;
 	}
 
-	// получение параметров и БД для устройуств пользователя
-	public function devParam($devNames, $limit){
-
-		$userDevTable = $this->tablPrefix.$_SESSION['autorize']['login'];
+	/* Параметры служебной информации от устраойств пользоветля */
+	public function userDevStatus($devStatusTable, $devName){
 		
-		$devParam = [];
+		$params = [
+			'devName' => $devName,
+		];
+
+		if (!$this->db->isTableExist($devStatusTable)) {
+			$this->error = 'Таблица '.$devStatusTable.' не найдена';
+			return false;
+		}
+		$sql = "SELECT * FROM $devStatusTable WHERE devName = :devName";
+		return $this->db->row($sql, $params);	
+	}
+
+
+
+	// получение датчиков и их даных, от устройств привязанных к пользователю
+	public function userDevParam($login, $devBindName, $limit){
+
+		$userDevTable = $this->tablPrefix.$login;
+		
+		$userDevParam = [];
 
 		// проверка наличия таблицы с данными пользователя
 		if (!$this->db->isTableExist($userDevTable)) {
@@ -58,58 +75,18 @@ class UserModel extends Model {
 			return false;
 		}
 
-		/* Запрос имен в таблице контолируемых параметров*/
+		/* Запрос имен колонок в таблице переметров устройств пользователя */
 		$columnName = $this->columnName($userDevTable);
-		//d($columnName);
 
+
+		/* Запрос записей данных с указанным лимитом */
+		$sql = "SELECT * FROM `$userDevTable` WHERE devName = '$devBindName' ORDER BY `id` ASC LIMIT ".$limit;
 		
+		$userDevParam = $this->db->rowAll($sql);
 
-		foreach ($devNames as $key => $value) {
-			d($value);
-			
-			/* Запрос 15 последних записей данных*/
-			$sql = "SELECT * FROM `$userDevTable` WHERE devName = '$value' ORDER BY `id` ASC LIMIT ".$limit;
-			
-			$sensVal =$this->db->rowAll($sql);
+		return $this->changeArr($userDevParam, $columnName);
 
-			$t = $this->changeArr($sensVal, $columnName);
-
-			$devParam['dfwffr'] = $t;
-
-			d($devParam);
 		}
-
-		
-
-
-		/* Запрос 15 последних записей данных*/
-		/*$sql = "SELECT * FROM `$userDevTable` ORDER BY `id` ASC LIMIT ".$limit;
-		$sensVal =$this->db->rowAll($sql);
-
-		/* Запись значений в массив с массивами параметров*/
-		foreach ($columnName as $name) {
-			foreach ($sensVal as $value) {
-				if ($name == 'sendtime'){
-					$devParam[$name][] = $this->clock($value[$name]);	
-				} else {
-					$devParam[$name][] = $value[$name];
-				}
-			}
-		}*/
-		//d($devParam);
-		return $devParam;
-	}
-
-
-	public function devStatus($table){
-		$params = [
-			$table => $table,
-		];
-		$sql = "SELECT * FROM $table";
-		$devStatus = $this->db->row($sql, $params);
-		///d($deviceStatus);
-		return $devStatus;	
-	}
 
 
 
@@ -128,7 +105,6 @@ class UserModel extends Model {
 				}
 			}
 		}
-		//d($devParam);
 		return $res;
 	}
 
