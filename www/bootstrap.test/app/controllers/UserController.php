@@ -54,8 +54,14 @@ class UserController extends Controller {
 						//d($devSensor);
 
 						$userDevParam[$devSensor][] = $devSensorVal;
+
+						if ($devSensor == 'time') {
+							$userDevParam['timeChart'][] = clock($devSensorVal);
+						}
+
 						//d($devSensor);
 						//d($devSensorVal);
+						//d($userDevParam[$devSensor]);
 					}					
 				}
 

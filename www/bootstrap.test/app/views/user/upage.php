@@ -53,69 +53,71 @@
                         </span>
                     </div>
                 </div>
+                
                 <?php if (!empty($vars['userDevParam'][$devBindName])) : ?>
-                    <div class="dev-chart">
-                        <?php foreach ($vars['userDevSensors'][$devBindName] as $sensor => $value) : ?>
-                            <?php if ($value !== 'time') : ?>
-                                <canvas id="<?= protect($devBindName); ?>-<?= protect($value); ?>-Chart" aria-label="Device Params" role="img"> </canvas>
-                            <?php endif ?>
-                        <?php endforeach; ?>
-                    </div>
+                <div class="dev-chart">
+                    <?php foreach ($vars['userDevSensors'][$devBindName] as $sensor => $value) : ?>
+                        <?php if (!preg_match("/time/i",$value)) : ?>
 
-                    <script>
+                            <div id="<?= protect($devBindName); ?>-<?= protect($value); ?>-chart" style="width:100%; height:300px;"></div>
+                        <?php endif ?>
+
+                    <script type="text/javascript">   
+
+                        var timeData = <?php echo json_encode($vars['userDevParam'][$devBindName]['sensors']['timeChart'], JSON_UNESCAPED_UNICODE); ?>;
                         
-                        const Time = <?php echo json_encode($vars['userDevParam'][$devBindName]['sensors']['time'], JSON_UNESCAPED_UNICODE); ?>;
+                        var sensorData = <?php echo json_encode($vars['userDevParam'][$devBindName]['sensors'][$value], JSON_UNESCAPED_UNICODE); ?>;
 
-                        <?php foreach ($vars['userDevSensors'][$devBindName] as $sensor => $value) : ?>
-                            <?php if ($value !== 'time') : ?>
-                                //Setup                   
-                                var data = {
-                                    labels: Time,
-                                    datasets: [
-                                        {
-                                            type: 'line',
-                                            label: '<?php echo protect($value) ?>',
-                                            data: <?php echo json_encode($vars['userDevParam'][$devBindName]['sensors'][$value], JSON_UNESCAPED_UNICODE); ?>,
-                                            borderWidth: 3,
-                                            cubicInterpolationMode: 'monotone',
-                                        },
-                                        
-                                    ]
-
-                                };
-
-                                //Config
-                                var config = {
-                                    type: 'scatter',
-                                    data: data,
-                                    options: {
-                                        responsive: true,
-                                        maintainAspectRatio: true,
-                                        scales: {
-                                            x: {
-                                                type: 'time',
-                                                
-
-                                                
-                                            },
-                                            y: {
-                                                beginAtZero: true
-                                            },
-                                        }
+                        Highcharts.chart('<?= protect($devBindName); ?>-<?= protect($value); ?>-chart', {
+                            chart: {
+                                type: 'line'
+                            },
+                            title: {
+                                text: ''
+                            },
+                            subtitle: {
+                                text: '<?php echo $value ?>',
+                            },
+                            xAxis: {
+                                categories: timeData,
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                    text: 'Temperature (°C)44'
+                                }
+                            },
+                            
+                            plotOptions: {
+                                line: {
+                                    dataLabels: {
+                                        enabled: true
                                     },
-                                };
+                                    enableMouseTracking: false
+                                }
+                            },
+                            series: [{
 
-                                //Render init block
-                                var myChart = new Chart(
-                                    document.getElementById('<?= protect($devBindName); ?>-<?= protect($value); ?>-Chart'), config
-                                );
-                            <?php endif ?>
-                        <?php endforeach; ?>
+                                name: '<?php echo $value ?>',
+                                data: sensorData,
+                            }]
+                        });
+
                     </script>
 
-                <?php endif; ?>
+                    <?php endforeach; ?>
+        
+                </div>
+
+                <? endif; ?>
+
             </div>
         </div>
 
 
     <?php endforeach; ?>
+
+</div>
+
+
+

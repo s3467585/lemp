@@ -14,31 +14,38 @@ class DevicesModel extends Model {
 	public function devStatus() {
 
 		$params = [
-			'devName' 		=> $_POST['devName'],
-			'ip' 			=> $_POST['ip'],
-			'mac' 			=> $_POST['mac'],
-			'bssid' 		=> $_POST['bssid'],
-			'sysLoad' 		=> $_POST['sysLoad'],
-			'sendTime' 		=> time(),
-			'upTime' 		=> $_POST['upTime'],
-			'isntp'			=> $_POST['isntp'],
-		];
+				'devName' 		=> $_POST['devName'],
+				'ip' 			=> $_POST['ip'],
+				'mac' 			=> $_POST['mac'],
+				'bssid' 		=> $_POST['bssid'],
+				'sysLoad' 		=> $_POST['sysLoad'],
+				'sendTime' 		=> time(),
+				'upTime' 		=> $_POST['upTime'] / 1000,
+				'isntp'			=> $_POST['isntp'],
+				'vcc'			=> $_POST ['vcc']
+			];
 
+		$sql = '';
+
+	
 		//db($params);
 		//db($this->db->isColumnExist('devName', 'devStatus', $params['devName']));
 
-		// поиск устройства в БД
+		// поиск имени устройства в БД
 		if ($this->db->isColumnExist('devName', 'devStatus', $params['devName'])) {
-
+			
 			// обновление записи
-			$sql = "UPDATE devStatus SET ip = :ip, mac = :mac, bssid = :bssid, sysLoad = :sysLoad, sendTime = :sendTime, upTime = :upTime, isntp = :isntp WHERE devStatus.devName = :devName";	
+			if ($_POST['connect'] = 1) {
 
-			if ($_POST['connectTime'] != ''){
+				$params ['connectTime'] = time();
 
-				$params ['connectTime'] = $_POST['connectTime'];
+				$sql = "UPDATE devStatus SET ip = :ip, mac = :mac, bssid = :bssid, sysLoad = :sysLoad, sendTime = :sendTime, upTime = :upTime, connectTime = :connectTime, isntp = :isntp, vcc = :vcc WHERE devStatus.devName = :devName";
 
-				$sql = "UPDATE devStatus SET ip = :ip, mac = :mac, bssid = :bssid, sysLoad = :sysLoad, sendTime = :sendTime, upTime = :upTime, connectTime = :connectTime, isntp = :isntp WHERE devStatus.devName = :devName";				
-			}
+			} else {
+
+				$sql = "UPDATE devStatus SET ip = :ip, mac = :mac, bssid = :bssid, sysLoad = :sysLoad, sendTime = :sendTime, upTime = :upTime, isntp = :isntp, vcc = :vcc WHERE devStatus.devName = :devName";
+
+			}	
 		
 			if (!$this->db->query($sql, $params)){
 				$this->error = 'Ошибка обновления записи статуса устройства: '.$params['devName'].'';
@@ -46,8 +53,9 @@ class DevicesModel extends Model {
 			}
 
 		} else {
+			
 			// создание записи
-			$sql = "INSERT INTO `devStatus`(devName, ip, mac, bssid, sysLoad, sendTime, upTime, connectTime, isntp) VALUES (:devName, :ip, :mac, :bssid, :sysLoad, :sendTime, :upTime, :connectTime, :isntp)";
+			$sql = "INSERT INTO `devStatus`(devName, ip, mac, bssid, sysLoad, sendTime, upTime, connectTime, isntp, vcc) VALUES (:devName, :ip, :mac, :bssid, :sysLoad, :sendTime, :upTime, :connectTime, :isntp, :vcc)";
 			
 			if (!$this->db->query($sql, $params)){
 				$this->error = 'Ошибка создания записи статуса устройства: '.$params['devName'].'';
@@ -90,12 +98,13 @@ class DevicesModel extends Model {
 			$totalColimn = $this->db->column($sql, $devName);
 			
 
-			d($totalColimn);
+			//d($totalColimn);
+
 			// Удаление последней записи при привышении заданного количества
 			if ($totalColimn >= 15) {
 
 				$sql = "DELETE FROM ".$tableName." WHERE devname = :devName ORDER BY `id` ASC LIMIT 1";
-				$this->db->query($sql);
+				$this->db->query($sql, $devName);
 			}
 
 			/* если устройство привязано к пользователю */
