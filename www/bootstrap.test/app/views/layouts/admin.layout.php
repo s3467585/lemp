@@ -1,90 +1,195 @@
-    <!DOCTYPE html>
-<html class="page" lang="ru">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="IE=edge" />
-    <link rel="icon" href="/public/assets/img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/public/assets/img/apple-touch-icon.png" />
-    <link type="text/css" href="/public/assets/styles/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Link ICONS -->
+    <link rel="icon" href="/public/assets/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/public/assets/assets/img/apple-touch-icon.png" />
+    <!-- Link FONT ICONS -->
     <link href="/public/assets/styles/fontawesome/css/all.min.css" rel="stylesheet">
-    <link type="text/css" href="/public/assets/styles/css/admin.css" rel="stylesheet">
+    <!-- Link CSS -->
+    <link type="text/css" href="/public/assets/styles/scss/admin.css" rel="stylesheet">
+    <link type="text/css" href="/public/assets/styles/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Link JS -->
     <script type="text/javascript" src="/public/assets/lib/jquery/jquery.js"></script>
-    <script type="text/javascript" src="/public/assets/js/index.js"></script>
-    <script type="text/javascript" src="/public/assets/js/form.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <!-- Loading Highcharts CDN -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <!--     <script type="text/javascript" src="/public/assets/js/form.js"></script> -->
     <title><?php echo $title; ?></title>
 </head>
 
+<body>
+    <!-- SIDE-BAR -->
+    <div class="side-bar">
+        <!-- TOP SID-BAR LOGO  -->
+        <div>
+            <div class="page-name">
+                <i id="brand" class="fa-brands fa-ubuntu"></i>
+                <span class="side-bar-span">SoveHome</span>
+            </div>
+            <!-- <button class="btn">
+                <i name="add" class="fa-solid fa-plus"></i>
+                <span class="side-bar-span">Create new</span>
+            </button> -->
+        </div>
 
-<body class="fixed-nav sticky-footer bg-secondary">
-<?php var_dump($this->route['action'])?>
-        <?php if ($this->route['action'] != 'signin'): ?>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-                <a class="navbar-brand text-center" href="/sup/administration">АдминПанель</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/sup/administration">
-                            <i class="fa fa-fw fa-user-gear"></i>
-                            <span class="nav-link-text">Пользователи</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/sup/devices">
-                            <i class="fa fa-fw fa-microchip"></i>
-                            <span class="nav-link-text">Устройства</span>
-                            </a>
-                        </li>
+        <nav class="side-bar-nav">
+            <ul>
+                <li>
+                    <a id="active" href="/" class="active">
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="side-bar-span item">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-desktop"></i></span>
+                        <span class="side-bar-span item">My Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/sup/users">
+                        <span class="icon"><i class="fas fa-user-friends"></i></span>
+                        <span class="side-bar-span item">Пользователи</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/sup/devices">
+                        <span class="icon"><i class="fas fa-microchip"></i></span>
+                        <span class="side-bar-span item">Устройства</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+                        <span class="side-bar-span item">Perfomance</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-database"></i></span>
+                        <span class="side-bar-span item">Development</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-chart-line"></i></span>
+                        <span class="side-bar-span item">Reports</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-user-shield"></i></span>
+                        <span class="side-bar-span item">Admin</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-cog"></i></span>
+                        <span class="side-bar-span item">Настройки</span>
+                    </a>
+                </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="/sup/adduser">
-                            <i class="fa fa-fw fa-plus"></i>
-                            <span class="nav-link-text">Добавить</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/sup/edituser">
-                            <i class="fa fa-fw fa-list"></i>
-                            <span class="nav-link-text">Редактировать</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/sup/deluser">
-                            <i class="fa fa-fw fa-list"></i>
-                            <span class="nav-link-text">Удалить</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/sup/logout">
-                            <i class="fa fa-fw fa-sign-out"></i>
-                            <span class="nav-link-text">Выход</span>
-                            </a>
-                        </li>
-                    </ul>
+            </ul>
+        </nav>
+        <div>
+            <!-- separator -->
+            <div class="line"></div>
+            <!-- color-scheme mode -->
+            <div class="color-scheme">
+                <div class="info">
+                    <i class="fa-solid fa-moon"></i>
+                    <span class="side-bar-span">Drak Mode</span>
                 </div>
-            </nav>
-        <?php endif; ?>
-            
-            <!-- Main -->
-            <main class="bg-Light">         
-                <?php echo $content;?>
-            </main>
-    
-        <?php if ($this->route['action'] != 'signin'): ?>
-            <footer class="sticky-footer">
-                <div class="container">
-                    <div class="text-center">
-                        <small>&copy; 2019-<?=date('Y');?> SovHome</small>
+                <div class="switch">
+                    <div class="base">
+                        <div class="circle">
+
+                        </div>
                     </div>
                 </div>
+            </div>
+            <!-- USER INFO -->
+            <div class="user">
+                <?php if (isset($_SESSION['autorize']) or isset($_SESSION['admin'])) {
+                    if (isset($_SESSION['admin'])) {
+                        $user =  $_SESSION['admin'];
+                    } else {
+                        $user = $_SESSION['autorize'];
+                    }
+                ?>
+                    <img src="/public/assets/img/index-s.jpg" alt="">
+                    <div class="user-info">
+                        <div class="user-data">
+                            <span class="side-bar-span name"><?php echo ($user['login']) ?></span>
+                            <span class="side-bar-span email"><?php echo ($user['email']) ?></span>
+                        </div>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                <?php } ?>
+            </div>
+            <!-- LOGOFF -->
+            <div class="logoff">
+                <a href="logout" class="active">
+                    <span class="icon"><i class="fa-solid fa-right-from-bracket"></i></i></span>
+                    <span class="side-bar-span item">Выйти</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <main>
+        <div class="wrapper">
+            <div class="top-menu">
+                <!-- TIME IFO -->
+                <div class="time-info">
+                    <a href="https://time.is/Yekaterinburg" id="time_is_link" rel="nofollow"></a>
+                    <span id="Yekaterinburg_z44a"></span>
+                    <script src="//widget.time.is/ru.js"></script>
+                    <script>
+                        time_is_widget.init({
+                            Yekaterinburg_z44a: {
+                                template: "Время: TIME<br>Сегодня: DATE",
+                                date_format: "dayname daynum.monthnum.yy"
+                            }
+                        });
+                    </script>
+                </div>
+                <!-- MENU TOGLE small screens-->
+                <div class="menu-togle">
+                    <i class="open fa-solid fa-bars"></i>
+                    <i class="close fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            <!-- SECTION -->
+            <section>
+                <?php if (isset($_SESSION["admin"])): ?>
+                    <!-- Content -->
+                    <?php echo $content; ?>
+                    <!--  -->
+                <?php endif; ?>
+            </section>
+            <!-- FOOTER -->
+            <footer>
+                <!-- COPY -->
+                <div class="copy">
+                    <small>&copy; 2019-<?= date('Y'); ?> SovHome</small>
+                </div>
             </footer>
-        <?php endif; ?>
-        <script type="text/javascript" src="/public/assets/styles/bootstrap/bootstrap.bundle.min.js"></script>
-        <script src="/public/assets/js/highcharts/code/highcharts.js"></script>
-    </body>
+        </div>
+    </main>
+
+    <script type="text/javascript" src="/public/assets/styles/bootstrap/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/public/assets/js/user-page.js"></script>
+    <script type="text/javascript" src="/public/assets/js/form.js"></script>
+</body>
 </html>
 
 

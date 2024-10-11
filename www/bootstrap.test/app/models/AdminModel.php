@@ -30,6 +30,25 @@ protected $tablePref = 'params_';
 		
 		return $users;
 	}
+	
+	public function users() {
+		// выбор полей для заполнения таблицы с пользователями
+		$sql = 'SELECT id, full_name, login, email, auth_time, admin, creation_time, stat_table FROM `users`';
+		$users = $this->db->rowAll($sql);
+		
+		// Проверка существования связанной таблицы данных с пользователем и удаление связи в случае отсутствия этой таблицы
+		foreach ($users as $key => $value){
+			$tableName = $this->tablePref.$value['login'];
+			if (!$this->db->isTableExist($tableName)){
+				if (!$this->db->updateColumn('users', 'stat_table', $value['id'], '')){
+					$this->error = 'Ошибка отключения таблицы данных к пользователю';
+					return false;
+				}	
+			} 
+		}
+		
+		return $users;
+	}
 
 	/* Данные статуса устройства по ID либо всех сразу */
 	public function devStatus($params=[]) {
@@ -49,8 +68,8 @@ protected $tablePref = 'params_';
 		}	
 	}
 
-	/* Создание таблицы данны для Пользователя */
-	public function userActivation($id) {
+	/* Создание таблицы данных для Пользователя */
+	public function user_activation($id) {
 		if (!$this->db->isColumnExist('id', 'users', $id)) {
 			$this->error = 'Пользователь не найден';
 			return false;
@@ -97,10 +116,10 @@ protected $tablePref = 'params_';
 			}
 			return true;
 		}
-	 }
+	}
 	
 	/* Отключение привязанной таблицы данных пользователя*/
-	public function dellUser($id){
+	public function dell_user($id){
 		if (!$this->db->isColumnExist('id', 'users', $id)) {
 		$this->error = 'Пользователь не найден';
 		return false;
@@ -112,11 +131,20 @@ protected $tablePref = 'params_';
 		}
 		return true;
 	}
-
-
 	
-	
+	/*  */
 	public function dev_activation($id) {
+	
+		if (!$this->db->isColumnExist('id', 'devStatus', $id)) {
+		$this->error = 'Устройство не найдено';
+		return false;
+	}
+
+	return true;
+	}
+
+	/*  */
+	public function dev_del($id) {
 	
 		if (!$this->db->isColumnExist('id', 'devStatus', $id)) {
 		$this->error = 'Устройство не найдено';

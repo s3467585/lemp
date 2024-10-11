@@ -24,9 +24,6 @@
 </head>
 
 <body>
-
-
-
     <!-- SIDE-BAR -->
     <div class="side-bar">
         <!-- TOP SID-BAR LOGO  -->

@@ -62,6 +62,17 @@ class AdminController extends Controller {
 		$this->view->render('Пользователи', $vars);
 
 	}
+	
+	public function usersAction() {
+
+		//$users = $this->model->administration();
+		$vars = [
+			'users' => $this->model->users(),
+		];
+
+		$this->view->render('Пользователи', $vars);
+
+	}
 
 	public function devicesAction() {
 		$var = [
@@ -83,23 +94,23 @@ class AdminController extends Controller {
 	}
 
 	/* Активаця таблиц пользователя */
-	public function userActivationAction() {	
-		if (!$this->model->userActivation($this->route['id'])){
+	public function user_activationAction() {	
+		if (!$this->model->user_activation($this->route['id'])){
 			$this->view->message('error', $this->model->error);
 			return false;
 		}
 		
-		$this->view->location('/sup/administration', 'success', 'Привязки таблицы данных к пользователю выполнена успешно');
+		$this->view->location('/sup/users', 'success', 'Привязки таблицы данных к пользователю выполнена успешно');
 	}
 
 	/* Снятие привязки таблиц пользователя */
-	public function dellUserAction() {	
-		if (!$this->model->dellUser($this->route['id'])){
+	public function dell_userAction() {	
+		if (!$this->model->dell_user($this->route['id'])){
 			$this->view->message('error', $this->model->error);
 			return false;
 		}
 
-		$this->view->location('/sup/administration', 'success', 'Отключение привязанной таблицы данных пользователя выполнено успешно');
+		$this->view->location('/sup/users', 'success', 'Отключение привязанной таблицы данных пользователя выполнено успешно');
 	}
 
 

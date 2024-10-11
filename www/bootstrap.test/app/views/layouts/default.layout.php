@@ -32,10 +32,10 @@
 			<div class="header__wrapper">
 				<!-- Logo -->
 				<div class="header__logo">
-					<a href="#"><img class="header__logo__img" height="30px" src="/public/assets/img/logo-5.svg" alt="logo"></a>
+					<a href="#"><img class="header__logo__img"  src="/public/assets/img/logo-5.svg" alt="logo"></a>
 				</div>
 				<!-- Navbar -->
-				<nav class="nav">
+				<nav class="side-bar-nav">
 					<ul class="">
 						<li class=""><a class="" aria-current="page" href="/">Главная</a></li>
 						<li class=""><a class="" aria-current="page" href="/about">Подробнее</a></li>

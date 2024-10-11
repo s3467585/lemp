@@ -50,6 +50,10 @@ return [
 			'controller' => 'admin',
 			'action' => 'administration',
 		],
+	'sup/users' => [
+			'controller' => 'admin',
+			'action' => 'users',
+		],
 
 	'sup/devices' => [
 			'controller' => 'admin',
@@ -66,14 +70,14 @@ return [
 			'action' => 'editUser',
 		],
 
-	'sup/useractivation/{id:\d+}' => [
+	'sup/user_activation/{id:\d+}' => [
 			'controller' => 'admin',
-			'action' => 'userActivation',
+			'action' => 'user_activation',
 		],
 		
-	'sup/delluser/{id:\d+}' => [
+	'sup/dell_user/{id:\d+}' => [
 			'controller' => 'admin',
-			'action' => 'dellUser',
+			'action' => 'dell_user',
 		],
 
 	'sup/dev_activation/{id:\d+}' => [

@@ -18,10 +18,11 @@ return [
 
 	'admin' => [
 		'administration',
+		'users',
 		'addUser',
 		'editUser',
-		'userActivation',
-		'dellUser',
+		'user_activation',
+		'dell_user',
 		'devices',
 		'dev_activation',
 		'dev_del',

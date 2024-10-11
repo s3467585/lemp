@@ -31,7 +31,7 @@ $module = ($link == '' || $link == 'index.php' || $link == 'login.html') ? 'main
     (($link == 'admin') ? 'admin' :
         (($link == 'contacts' || $link == 'search') ? 'page' :
             (($link == 'blog') ? 'blog' :
-                (($link == 'portfolio') ? 'portfolio' : 'page')));
+                (($link == 'portfolio') ? 'portfolio' : 'page'))));
 
 if($module !== 'admin' && $link != 'manual'){
     require_once($_SERVER['DOCUMENT_ROOT']."/modules/404.php");

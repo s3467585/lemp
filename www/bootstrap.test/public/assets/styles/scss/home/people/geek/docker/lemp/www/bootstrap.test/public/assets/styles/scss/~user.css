@@ -1,0 +1,221 @@
+/* Hower */
+/* SIDBAR */
+/*TEST PAGE */
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap");
+:root {
+  --color-side-bar: rgb(255, 255, 255);
+  --color-text: rgb(0, 0, 0);
+  --color-text-menu: rgb(134, 136, 144);
+  --color-menu-hover: rgb(238, 238, 238);
+  --color-menu-hover-text: rgb(0, 0, 0);
+  --color-boton: rgb(0, 0, 0);
+  --color-boton-text: rgb(255, 255, 255);
+  --color-line: rgb(180, 180, 180);
+  --color-switch-base: rgb(201, 202, 206);
+  --color-switch-circle: rgb(241, 241, 241);
+  --color-scroll: rgb(192, 192, 192);
+  --color-scroll-hover: rgb(134, 134, 134);
+  --color-main: rgb(225, 255, 255);
+  --color-text-success:rgb(9, 170, 57);
+  --color-text-danger: rgb(170, 9, 9);
+  --color-success:rgb(200, 227, 209);
+  --color-danger: rgb(240, 214, 214);
+}
+
+.dark-mode {
+  --color-side-bar:rgb(44,45,49);
+  --color-text:rgb(255,255,255);
+  --color-text-menu:rgb(110,110,117);
+  --color-menu-hover:rgb(0,0,0);
+  --color-menu-hover-text:rgb(238,238,238);
+  --color-boton:rgb(255,255,255);
+  --color-boton-text:rgb(0,0,0);
+  --color-linea:rgb(90,90,90);
+  --color-switch-base:rgb(39,205,64);
+  --color-switch-circle:rgb(255,255,255);
+  --color-scroll:rgb(68,69,74);
+  --color-scroll-hover:rgb(85,85,85);
+  --color-main: rgba(0, 69, 69);
+}
+
+.text-success {
+  color: var(--color-text-success);
+}
+
+.text-danger {
+  color: var(--color-text-danger);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+ol, ul, li {
+  list-style: none;
+}
+
+a, img, i {
+  display: block;
+}
+
+button {
+  border: none;
+}
+
+html {
+  overflow-y: scroll;
+  font-size: 18px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: #c1bdba;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 14px;
+}
+
+body.active .sidebar {
+  left: -225px;
+}
+body.active .section {
+  margin-left: 0;
+  width: 100%;
+}
+
+/* SIDBAR */
+.sidebar {
+  background: rgb(5, 68, 104);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 225px;
+  height: 100%;
+  padding: 1rem 0;
+  transition: all 0.5s ease;
+}
+.sidebar .profile {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.sidebar .profile img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.sidebar .profile h3 {
+  color: #ffffff;
+  margin: 10px 0 5px;
+}
+.sidebar .profile p {
+  color: rgb(206, 240, 253);
+  font-size: 14px;
+}
+.sidebar .menu ul li {
+  width: 100%;
+  margin: 2px 0;
+}
+.sidebar .menu ul li a {
+  width: 100%;
+  padding: 12px 0px 12px 20px;
+  color: #ffffff;
+  font-size: 18px;
+  position: relative;
+}
+.sidebar .menu ul li a:hover, .sidebar .menu ul li a.active {
+  color: #0c7db1;
+  background: #ffffff;
+  border-left: 3px solid rgb(5, 68, 104);
+  border-right: 3px solid rgb(5, 68, 104);
+  border-radius: 5px;
+}
+.sidebar .menu ul li a:hover .icon, .sidebar .menu ul li a.active .icon {
+  color: #0c7db1;
+}
+.sidebar .menu ul li a .icon {
+  color: #ffffff;
+  display: inline-block;
+  margin-right: 10px;
+}
+.sidebar .menu ul li a .item {
+  white-space: nowrap;
+}
+.sidebar .copy {
+  width: 225px;
+  color: #ffffff;
+  bottom: 0;
+  margin: 0 auto;
+  padding: 5px 0;
+  text-align: center;
+}
+@media (max-width: 576px) {
+  .sidebar {
+    width: 65px;
+  }
+  .sidebar .profile img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+  .sidebar .profile h3,
+  .sidebar .profile p {
+    display: none;
+  }
+  .sidebar .menu ul li {
+    width: 100%;
+    margin: 2px 0;
+  }
+  .sidebar .menu ul li a .item {
+    display: none;
+  }
+}
+.sidebar .copy {
+  display: none;
+}
+
+/* SECTION */
+.section {
+  width: calc(100% - 225px);
+  margin-left: 225px;
+  transition: all 0.5s ease;
+}
+.section .top_navbar,
+.section footer {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+}
+.section .top_navbar .hamburger a {
+  font-size: 28px;
+  color: #ffffff;
+  transition: all 0.5s ease;
+}
+.section .top_navbar .hamburger a:hover {
+  color: #0c7db1;
+}
+@media (max-width: 576px) {
+  .section {
+    width: calc(100% - 65px);
+    margin-left: 65px;
+    transition: all 0.5s ease;
+  }
+}
+
+/* MAIN */
+main .container {
+  display: flex;
+  margin: 0.5rem;
+}/*# sourceMappingURL=~user.css.map */

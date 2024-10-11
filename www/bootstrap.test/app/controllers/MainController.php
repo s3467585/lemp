@@ -90,7 +90,7 @@ class MainController extends Controller {
 				return false;
 			} 
 
-			//  
+			// проверяем пользователя на наличие регистрации
 			if ($this->model->signin($_POST['login'])) {
 
 				if (isset($_SESSION['admin'])){
@@ -103,6 +103,7 @@ class MainController extends Controller {
 				return false;
 		 	}
 
+			// регистрация пользоветеля
 			if (!$this->model->signup($_POST)) {
 				$this->view->message('error', $this->model->error);
 				return false;

@@ -3,6 +3,7 @@
 /*TEST PAGE */
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap");
 :root {
+  --color-white: rgb(255, 255, 255);
   --color-side-bar: rgb(255, 255, 255);
   --color-text: rgb(0, 0, 0);
   --color-text-menu: rgb(134, 136, 144);
@@ -23,6 +24,7 @@
 }
 
 .dark-mode {
+  --color-dark: rgb(0,0,0);
   --color-side-bar:rgb(44,45,49);
   --color-text:rgb(255,255,255);
   --color-text-menu:rgb(110,110,117);
@@ -44,5 +46,4 @@
 
 .text-danger {
   color: var(--color-text-danger);
-}
-/*# sourceMappingURL=vars.css.map */
+}/*# sourceMappingURL=vars.css.map */
