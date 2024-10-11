@@ -24,16 +24,17 @@
                                     <!-- Вкладка network-->
                                     <li class="nav-item">
                                         <a class="nav-link" data-bs-toggle="tab" href="#network-<?php echo($device["id"]); ?>">Сеть</a>
+                                    </li>
                                     <!-- Вкладка status-->
-                                    </li><li class="nav-item">
+                                    <li class="nav-item">
                                         <a class="nav-link" data-bs-toggle="tab" href="#status-<?php echo($device["id"]); ?>">Состояние</a>
                                     </li>
                                     <!-- Вкладка settings-->
-                                    </li><li class="nav-item">
+                                    <li class="nav-item">
                                         <a class="nav-link" data-bs-toggle="tab" href="#settings-<?php echo($device["id"]); ?>">Настройки</a>
                                     </li>
                                     <!-- Вкладка JSON-->
-                                    </li><li class="nav-item">
+                                    <li class="nav-item">
                                         <a class="nav-link" data-bs-toggle="tab" href="#JSON-<?php echo($device["id"]); ?>">JSON</a>
                                     </li>
                                 </ul>
@@ -102,14 +103,41 @@
                                 <!-- Блоклок JSON -->
                                 <div class="tab-pane fade" id="JSON-<?php echo($device["id"]); ?>" role="tabpanel">
                                     <div class="d-flex">                        
-                                        <div class="">sysLoad:</div>
+                                        <div class="">JSON:</div>
                                         <div class=""><?php echo($device["json"]); ?></div>
                                     </div>
                                 </div>
                                 <!-- Блоклок settings -->
                                 <div class="tab-pane fade" id="settings-<?php echo($device["id"]); ?>" role="tabpanel">
-                                    <a href="/sup/dev_activation/<?php echo $device['id']; ?>" class="btn btn-primary" id="link">Активировать</a>
-                                    <a href="/sup/dev_del/<?php echo $device['id']; ?>" class="btn btn-danger">Удалить</a>
+                                    
+
+                                    <div class="card">
+                                        <div class="card-header">Клиент
+                                        <ul class="nav nav-pills">
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#settings-<?php echo($device["id"]); ?>">Настройки</a>
+                                        </li>
+                                        </ul>
+
+                                            <a href="/sup/dev_activation/<?php echo $device['id']; ?>" class="btn btn-primary" id="link">Активировать</a>
+                                            <a href="/sup/dev_del/<?php echo $device['id']; ?>" class="btn btn-danger">Удалить</a>
+                                        </div>
+                                        <div class="card-body">
+                                            <?php if (empty($bind_users)): ?>
+                                                <p>Клиенты не найдены</p>
+                                            <?php else: ?>
+                                                <ul class="list-group list-group-flush">
+                                                    <?php foreach ($bind_users as $user): ?>
+                                                        <li class="list-group-item"><?php echo $user; ?></li>
+                                                    <?php endforeach; ?>
+                                                </ul>
+                                            <?php endif; ?>
+                                        
+                                        </div>
+                                    </div>
+
+
+                                    
                                 </div>
                                 </div>
                             </div>
