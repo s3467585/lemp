@@ -3,7 +3,7 @@
     <div class="card">
         <div class="card-header d-flex flex-row align-items-center">
             <i class="fas fa-microchip __web-inspector-hide-shortcut__"></i>   
-            <div class="px-2">Зарегистрированные устройства</div>
+            <div class="px-2 ">Зарегистрированные устройства</div>
         </div>
         <div class="card-body">
             <div class="row row-cols-1 row-cols-lg-2 g-2">
