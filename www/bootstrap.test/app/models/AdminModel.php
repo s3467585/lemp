@@ -131,6 +131,13 @@ protected $tablePref = 'params_';
 		}
 		return true;
 	}
+
+	/* Получение данных таблицы binding */
+	public function binding(){
+		$sql = 'SELECT devStatus.*, binding.user FROM binding LEFT JOIN devStatus USING(devName);';
+		$binding = $this->db->rowALL($sql);
+		return $binding;
+	}
 	
 	/*  */
 	public function dev_activation($id) {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: mysql
--- Время создания: Апр 27 2024 г., 11:24
+-- Время создания: Окт 15 2024 г., 09:59
 -- Версия сервера: 8.0.31
 -- Версия PHP: 8.0.19
 
@@ -40,7 +40,9 @@ CREATE TABLE `binding` (
 
 INSERT INTO `binding` (`id`, `user`, `devName`, `mac`) VALUES
 (1, '22', 'SovHome_Esp12N_1', 'C8:C9:A3:30:FA:68'),
-(3, '22', 'S_1', 'C8:C9:A3:30:FA:68');
+(3, '22', 'S_1', 'C8:C9:A3:30:FA:68'),
+(5, '2', 'S_1', 'C8:C9:A3:30:FA:68'),
+(6, 'ыолра', 'S_1', 'C8:C9:A3:30:FA:68');
 
 -- --------------------------------------------------------
 
@@ -85,6 +87,7 @@ CREATE TABLE `devStatus` (
   `sendTime` int DEFAULT NULL,
   `connectTime` int DEFAULT NULL,
   `isntp` int DEFAULT NULL,
+  `vcc` float DEFAULT NULL,
   `json` json DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -92,10 +95,23 @@ CREATE TABLE `devStatus` (
 -- Дамп данных таблицы `devStatus`
 --
 
-INSERT INTO `devStatus` (`id`, `devName`, `devKey`, `ip`, `mac`, `bssid`, `sysLoad`, `upTime`, `sendTime`, `connectTime`, `isntp`, `json`) VALUES
-(15, 'S_1', NULL, '192.168.10.252', 'C8:C9:A3:30:FA:68', '76:4D:28:7D:37:EA', 11, 1588, 1713959627, 1713950394, 1, NULL),
-(16, 'S_2', NULL, '192.168.10.252', 'C8:C9:A3:30:FA:68', '76:4D:28:7D:37:EA', 11, 134, 1713528348, 1713522874, 1, NULL),
-(17, 'SovHome_Esp12N_1', NULL, '192.168.10.252', 'C8:C9:A3:30:FA:68', '76:4D:28:7D:37:EA', 11, 134, 1713528348, 1713522874, 1, NULL);
+INSERT INTO `devStatus` (`id`, `devName`, `devKey`, `ip`, `mac`, `bssid`, `sysLoad`, `upTime`, `sendTime`, `connectTime`, `isntp`, `vcc`, `json`) VALUES
+(15, 'S_1', NULL, '192.168.10.252', 'C8:C9:A3:30:FA:68', '76:4D:28:7D:37:EA', 11, 7713, 1714737040, 1714737040, 1, 2.93, '{\"hum\": 0.0, \"pres\": 0.0, \"temp\": 0.0}'),
+(16, 'S_2', NULL, '192.168.10.252', 'C8:C9:A3:30:FA:68', '76:4D:28:7D:37:EA', 11, 134, 1713528348, 1713522874, 1, NULL, '{\"hum\": 0.0, \"pres\": 0.0, \"temp\": 0.0}'),
+(17, 'SovHome_Esp12N_1', NULL, '192.168.10.252', 'C8:C9:A3:30:FA:68', '76:4D:28:7D:37:EA', 11, 134, 1713528348, 1713522874, 1, NULL, '{\"hum\": 0.0, \"pres\": 0.0, \"temp\": 0.0}');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `params_11`
+--
+
+CREATE TABLE `params_11` (
+  `id` int UNSIGNED NOT NULL,
+  `devname` varchar(50) DEFAULT NULL,
+  `json` text,
+  `sendtime` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -115,21 +131,34 @@ CREATE TABLE `params_22` (
 --
 
 INSERT INTO `params_22` (`id`, `devname`, `json`, `sendtime`) VALUES
-(1470, 'S_1', '{\"temp\":22.82,\"hum\":15.83,\"pres\":1019.56, \"time\":1713864497}', 1713864498),
-(1471, 'S_1', '{\"temp\":22.82,\"hum\":15.83,\"pres\":1019.56, \"time\":1713864527}', 1713864528),
-(1472, 'S_1', '{\"temp\":22.79,\"hum\":15.67,\"pres\":1019.53, \"time\":1713864557}', 1713864558),
-(1473, 'S_1', '{\"temp\":22.79,\"hum\":15.67,\"pres\":1019.53, \"time\":1713864587}', 1713864588),
-(1474, 'S_1', '{\"temp\":22.77,\"hum\":15.58,\"pres\":1019.51, \"time\":1713864617}', 1713864618),
-(1475, 'S_1', '{\"temp\":22.77,\"hum\":15.58,\"pres\":1019.51, \"time\":1713864647}', 1713864648),
-(1476, 'S_1', '{\"temp\":22.77,\"hum\":15.38,\"pres\":1019.49, \"time\":1713864677}', 1713864678),
-(1477, 'S_1', '{\"temp\":22.77,\"hum\":15.38,\"pres\":1019.49, \"time\":1713864707}', 1713864708),
-(1478, 'S_1', '{\"temp\":22.75,\"hum\":15.23,\"pres\":1019.48, \"time\":1713864737}', 1713864738),
-(1479, 'S_1', '{\"temp\":22.75,\"hum\":15.23,\"pres\":1019.48, \"time\":1713864767}', 1713864768),
-(1480, 'S_1', '{\"temp\":22.71,\"hum\":15.12,\"pres\":1019.49, \"time\":1713864797}', 1713864798),
-(1481, 'S_1', '{\"temp\":22.71,\"hum\":15.12,\"pres\":1019.49, \"time\":1713864827}', 1713864828),
-(1482, 'S_1', '{\"temp\":22.69,\"hum\":15.05,\"pres\":1019.53, \"time\":1713864857}', 1713864858),
-(1483, 'S_1', '{\"temp\":22.69,\"hum\":15.05,\"pres\":1019.53, \"time\":1713864887}', 1713864888),
-(1484, 'S_1', '{\"temp\":22.68,\"hum\":15.00,\"pres\":1019.50, \"time\":1713864917}', 1713864918);
+(1493, 'S_1', '{\"temp\":22.40,\"hum\":16.32,\"pres\":995.41, \"time\":1714734159}', 1714734160),
+(1494, 'S_1', '{\"temp\":22.40,\"hum\":16.32,\"pres\":995.41, \"time\":1714734189}', 1714734190),
+(1495, 'S_1', '{\"temp\":22.39,\"hum\":16.30,\"pres\":995.37, \"time\":1714734219}', 1714734220),
+(1496, 'S_1', '{\"temp\":22.39,\"hum\":16.30,\"pres\":995.37, \"time\":1714734249}', 1714734250),
+(1497, 'S_1', '{\"temp\":22.33,\"hum\":16.23,\"pres\":995.36, \"time\":1714734279}', 1714734280),
+(1498, 'S_1', '{\"temp\":22.43,\"hum\":16.19,\"pres\":995.377686, \"time\":1714734309}', 1714734310),
+(1499, 'S_1', '{\"temp\":22.34,\"hum\":16.18,\"pres\":995.34, \"time\":1714734339}', 1714734340),
+(1500, 'S_1', '{\"temp\":22.59,\"hum\":16.32,\"pres\":995.18, \"time\":1714736829}', 1714736830),
+(1501, 'S_1', '{\"temp\":22.58,\"hum\":16.32,\"pres\":995.16, \"time\":1714736859}', 1714736860),
+(1502, 'S_1', '{\"temp\":22.58,\"hum\":16.32,\"pres\":995.16, \"time\":1714736889}', 1714736890),
+(1503, 'S_1', '{\"temp\":22.59,\"hum\":16.33,\"pres\":995.14, \"time\":1714736919}', 1714736920),
+(1504, 'S_1', '{\"temp\":22.59,\"hum\":16.33,\"pres\":995.14, \"time\":1714736949}', 1714736950),
+(1505, 'S_1', '{\"temp\":22.59,\"hum\":16.33,\"pres\":995.14, \"time\":1714736979}', 1714736980),
+(1506, 'S_1', '{\"temp\":22.61,\"hum\":16.50,\"pres\":995.12, \"time\":1714737009}', 1714737010),
+(1507, 'S_1', '{\"temp\":22.61,\"hum\":16.50,\"pres\":995.12, \"time\":1714737039}', 1714737040);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `params_77`
+--
+
+CREATE TABLE `params_77` (
+  `id` int UNSIGNED NOT NULL,
+  `devname` varchar(50) DEFAULT NULL,
+  `json` text,
+  `sendtime` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -252,10 +281,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `full_name`, `login`, `email`, `auth_time`, `admin`, `creation_time`, `stat_table`, `password`) VALUES
-(183, '11', '11', 'server-2013-86@yandex.ru', 1713351207, 1, 1696419768, '', '$2y$10$UCJbZ2vS2jns0SFF35UhheBI.UEnQc52aQxYRQ/LN8lf1aLIfEkBi'),
-(184, '22', '22', 'server-2013-86@yandex.ru', 1714215442, 0, 1696420328, 'params_22', '$2y$10$cMS1Et9Gfz3npkQ07QvJhuOY.WNkUP.LDWOWondGdBO6KgB8ZAtQG'),
-(185, '33', '33', 'server-2013-86@yandex.ru', 1696500635, 0, 1696500635, '', '$2y$10$r.gIbeGYY4caGUzJFQg3De7c0SIoIiaKz961yJo62e7ymz5gj9Sau'),
-(186, '44', '44', '44@44.ru', 1713267110, 0, 1713267105, '', '$2y$10$QH06t1W9MI5J8ZbuM1.FPuPnVCjp2ZYB0Gca37QDrJw.fgY3K5EGC');
+(183, '11', '11', 'server-2013-86@yandex.ru', 1728900141, 1, 1696419768, 'params_11', '$2y$10$UCJbZ2vS2jns0SFF35UhheBI.UEnQc52aQxYRQ/LN8lf1aLIfEkBi'),
+(184, '22', '22', 'server-2013-86@yandex.ru', 1728035972, 0, 1696420328, '', '$2y$10$cMS1Et9Gfz3npkQ07QvJhuOY.WNkUP.LDWOWondGdBO6KgB8ZAtQG'),
+(200, '77', '77', '77@77.ru', 1727868611, 0, 1727868611, '', '$2y$10$8CT5/OkpnMgnWvzpA.TXpunyhlhWA7HmyyZxscacny2c4pWv2UZdG');
 
 --
 -- Индексы сохранённых таблиц
@@ -280,9 +308,21 @@ ALTER TABLE `devStatus`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `params_11`
+--
+ALTER TABLE `params_11`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `params_22`
 --
 ALTER TABLE `params_22`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `params_77`
+--
+ALTER TABLE `params_77`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -313,7 +353,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `binding`
 --
 ALTER TABLE `binding`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `deviceParam`
@@ -328,10 +368,22 @@ ALTER TABLE `devStatus`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
+-- AUTO_INCREMENT для таблицы `params_11`
+--
+ALTER TABLE `params_11`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT для таблицы `params_22`
 --
 ALTER TABLE `params_22`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1485;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1508;
+
+--
+-- AUTO_INCREMENT для таблицы `params_77`
+--
+ALTER TABLE `params_77`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `stat`
@@ -349,7 +401,7 @@ ALTER TABLE `top_menu`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

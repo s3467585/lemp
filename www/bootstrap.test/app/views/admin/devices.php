@@ -14,134 +14,160 @@
                     <?php foreach ($devices as $device): ?>  
                         <!-- Карточка девайса -->
                         <div class="col"> 
-                        <div class="adm-card card">
-                            <div class="adm-card-header card-header">
-                                <ul class="nav nav-pills">
-                                    <!-- Вкладка description (активная) -->
-                                    <li class="nav-item">
-                                        <a class="nav-link active" data-bs-toggle="tab" href="#description-<?php echo($device["id"]); ?>">Общее</a>
-                                    </li>
-                                    <!-- Вкладка network-->
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-bs-toggle="tab" href="#network-<?php echo($device["id"]); ?>">Сеть</a>
-                                    </li>
-                                    <!-- Вкладка status-->
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-bs-toggle="tab" href="#status-<?php echo($device["id"]); ?>">Состояние</a>
-                                    </li>
-                                    <!-- Вкладка settings-->
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-bs-toggle="tab" href="#settings-<?php echo($device["id"]); ?>">Настройки</a>
-                                    </li>
-                                    <!-- Вкладка JSON-->
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-bs-toggle="tab" href="#JSON-<?php echo($device["id"]); ?>">JSON</a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo($device["devName"]); ?></h5>
-                                <div class="tab-content">
-                                <!-- Блоклок description -->
-                                <div class="tab-pane fade show active" id="description-<?php echo($device["id"]); ?>" role="tabpanel">
-                                    <div class="d-flex">                        
-                                        <div class="">id:</div>
-                                        <div class=""><?php echo($device["id"]); ?></div>
-                                    </div>
-                                    <div class="d-flex">                        
-                                        <div class="">devName:</div>
-                                        <div class=""><?php echo($device["devName"]); ?></div>
-                                    </div>
-                                    <div class="d-flex">                        
-                                        <div class="">MAC:</div>
-                                        <div class=""><?php echo($device["mac"]); ?></div>
-                                    </div>
-                                </div>
-                                <!-- Блоклок network -->
-                                <div class="tab-pane fade" id="network-<?php echo($device["id"]); ?>" role="tabpanel">
-                                    <div class="d-flex">                        
-                                        <div class="">MAC:</div>
-                                        <div class=""><?php echo($device["mac"]); ?></div>
-                                    </div>
-                                    <div class="d-flex">                        
-                                        <div class="">IP:</div>
-                                        <div class=""><?php echo($device["ip"]); ?></div>
-                                    </div>
-                                    <div class="d-flex">                        
-                                        <div class="">BSSID:</div>
-                                        <div class=""><?php echo($device["bssid"]); ?></div>
-                                    </div>
-                                </div>
-                                <!-- Блоклок status -->
-                                <div class="tab-pane fade" id="status-<?php echo($device["id"]); ?>" role="tabpanel">
-                                        <div class="d-flex">                        
-                                        <div class="">sysLoad:</div>
-                                        <div class=""><?php echo($device["sysLoad"]); ?></div>
-                                    </div>
-                                    <div class="d-flex">                        
-                                        <div class="">upTime:</div>
-                                        <div class=""><?php echo($device["upTime"]); ?></div>
-                                    </div>
-                                    <div class="d-flex">                        
-                                        <div class="">sendTime:</div>
-                                        <div class=""><?php echo($device["sendTime"]); ?></div>
-                                    </div>
-                                    <div class="d-flex">                        
-                                        <div class="">connectTime:</div>
-                                        <div class=""><?php echo($device["connectTime"]); ?></div>
-                                    </div>
-                                    <div class="d-flex">                        
-                                        <div class="">isntp:</div>
-                                        <div class=""><?php echo($device["isntp"]); ?></div>
-                                    </div>
-                                    <div class="d-flex">                        
-                                        <div class="">vcc:</div>
-                                        <div class=""><?php echo($device["vcc"]); ?></div>
-                                    </div>
-                                </div>
-                                <!-- Блоклок JSON -->
-                                <div class="tab-pane fade" id="JSON-<?php echo($device["id"]); ?>" role="tabpanel">
-                                    <div class="d-flex">                        
-                                        <div class="">JSON:</div>
-                                        <div class=""><?php echo($device["json"]); ?></div>
-                                    </div>
-                                </div>
-                                <!-- Блоклок settings -->
-                                <div class="tab-pane fade" id="settings-<?php echo($device["id"]); ?>" role="tabpanel">
-                                    
-
-                                    <div class="card">
-                                        <div class="card-header">Клиент
-                                        <ul class="nav nav-pills">
+                            <div class="adm-card card">
+                                <div class="adm-card-header card-header">
+                                    <ul class="nav nav-pills">
+                                        <!-- Вкладка description (активная) -->
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-bs-toggle="tab" href="#description-<?php echo($device["id"]); ?>">Общее</a>
+                                        </li>
+                                        <!-- Вкладка network-->
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#network-<?php echo($device["id"]); ?>">Сеть</a>
+                                        </li>
+                                        <!-- Вкладка status-->
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#status-<?php echo($device["id"]); ?>">Состояние</a>
+                                        </li>
+                                        <!-- Вкладка settings-->
                                         <li class="nav-item">
                                             <a class="nav-link" data-bs-toggle="tab" href="#settings-<?php echo($device["id"]); ?>">Настройки</a>
                                         </li>
-                                        </ul>
+                                        <!-- Вкладка JSON-->
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#JSON-<?php echo($device["id"]); ?>">JSON</a>
+                                        </li>
+                                    </ul>
+                                </div>
 
-                                            <a href="/sup/dev_activation/<?php echo $device['id']; ?>" class="btn btn-primary" id="link">Активировать</a>
-                                            <a href="/sup/dev_del/<?php echo $device['id']; ?>" class="btn btn-danger">Удалить</a>
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo($device["devName"]); ?></h5>
+                                    <div class="tab-content">
+                                    <!-- Блоклок description -->
+                                    <div class="tab-pane fade show active" id="description-<?php echo($device["id"]); ?>" role="tabpanel">
+                                        <div class="d-flex">                        
+                                            <div class="">id:</div>
+                                            <div class=""><?php echo($device["id"]); ?></div>
                                         </div>
-                                        <div class="card-body">
-                                            <?php if (empty($bind_users)): ?>
-                                                <p>Клиенты не найдены</p>
-                                            <?php else: ?>
-                                                <ul class="list-group list-group-flush">
-                                                    <?php foreach ($bind_users as $user): ?>
-                                                        <li class="list-group-item"><?php echo $user; ?></li>
-                                                    <?php endforeach; ?>
-                                                </ul>
-                                            <?php endif; ?>
-                                        
+                                        <div class="d-flex">                        
+                                            <div class="">devName:</div>
+                                            <div class=""><?php echo($device["devName"]); ?></div>
+                                        </div>
+                                        <div class="d-flex">                        
+                                            <div class="">MAC:</div>
+                                            <div class=""><?php echo($device["mac"]); ?></div>
                                         </div>
                                     </div>
-
-
-                                    
+                                    <!-- Блоклок network -->
+                                    <div class="tab-pane fade" id="network-<?php echo($device["id"]); ?>" role="tabpanel">
+                                        <div class="d-flex">                        
+                                            <div class="">MAC:</div>
+                                            <div class=""><?php echo($device["mac"]); ?></div>
+                                        </div>
+                                        <div class="d-flex">                        
+                                            <div class="">IP:</div>
+                                            <div class=""><?php echo($device["ip"]); ?></div>
+                                        </div>
+                                        <div class="d-flex">                        
+                                            <div class="">BSSID:</div>
+                                            <div class=""><?php echo($device["bssid"]); ?></div>
+                                        </div>
+                                    </div>
+                                    <!-- Блоклок status -->
+                                    <div class="tab-pane fade" id="status-<?php echo($device["id"]); ?>" role="tabpanel">
+                                            <div class="d-flex">                        
+                                            <div class="">sysLoad:</div>
+                                            <div class=""><?php echo($device["sysLoad"]); ?></div>
+                                        </div>
+                                        <div class="d-flex">                        
+                                            <div class="">upTime:</div>
+                                            <div class=""><?php echo($device["upTime"]); ?></div>
+                                        </div>
+                                        <div class="d-flex">                        
+                                            <div class="">sendTime:</div>
+                                            <div class=""><?php echo($device["sendTime"]); ?></div>
+                                        </div>
+                                        <div class="d-flex">                        
+                                            <div class="">connectTime:</div>
+                                            <div class=""><?php echo($device["connectTime"]); ?></div>
+                                        </div>
+                                        <div class="d-flex">                        
+                                            <div class="">isntp:</div>
+                                            <div class=""><?php echo($device["isntp"]); ?></div>
+                                        </div>
+                                        <div class="d-flex">                        
+                                            <div class="">vcc:</div>
+                                            <div class=""><?php echo($device["vcc"]); ?></div>
+                                        </div>
+                                    </div>
+                                    <!-- Блоклок JSON -->
+                                    <div class="tab-pane fade" id="JSON-<?php echo($device["id"]); ?>" role="tabpanel">
+                                        <div class="d-flex">                        
+                                            <div class="">JSON:</div>
+                                            <div class=""><?php echo($device["json"]); ?></div>
+                                        </div>
+                                    </div>
+                                    <!-- Блоклок settings -->
+                                    <div class="tab-pane fade" id="settings-<?php echo($device["id"]); ?>" role="tabpanel">
+                                        <div class="card">
+                                            <div class="card-header-between">
+                                                <span>Клиент</span>
+                                                <ul class="nav nav-pills">
+                                                    <!-- Вкладка users (активная) -->
+                                                    <li class="nav-item">
+                                                        <a class="active" data-bs-toggle="tab" href="#users-<?php echo($device["id"]); ?>">
+                                                            <span class="icon"><i class="fas fa-user-friends"></i></span>
+                                                            <span class="side-bar-span">main</span>           
+                                                        </a>
+                                                    </li>
+                                                    <!-- Вкладка edit -->
+                                                    <li class="nav-item">
+                                                        <a class="" data-bs-toggle="tab" href="#edit-<?php echo($device["id"]); ?>">
+                                                            <span class="icon"><i class="fas fa-cog"></i></span>
+                                                            <span class="side-bar-span">Редактировать</span>           
+                                                        </a>
+                                                        <a href="/sup/dev_del/<?php echo $device['id']; ?>" class="nav-link">Удалить</a>
+                                                    </li>
+                                                </ul>
+                                                <div class="line"> </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="tab-content">
+                                                    <!-- Блоклок users -->
+                                                    <div class="tab-pane fade show active" id="users-<?php echo($device["id"]); ?>" role="tabpanel">
+                                                        <div lass="d-flex"> 
+                                                            <ul class="list-group list-group-flush"> 
+                                                            <!-- Подписанные пользователи -->
+                                                            <?php 
+                                                                $i = 0; 
+                                                                foreach($binding as $bind) {
+                                                                    if ($bind['devName'] == $device['devName']) {
+                                                                        echo '<li class="list-group-item">'.$bind['user'].'</li>';
+                                                                        ++$i;
+                                                                    }
+                                                                }
+                                                                if ($i ==0) {
+                                                                    echo '<p>Клиенты не найдены</p>';
+                                                                }
+                                                            ?>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Блоклок edit -->
+                                                    <div class="tab-pane fade" id="edit-<?php echo($device["id"]); ?>" role="tabpanel">
+                                                        <ul class="list-group list-group-flush">
+                                                            <?php foreach ($device as $user): ?>
+                                                                <li class="list-group-item"><?php echo $user; ?></li>
+                                                            <?php endforeach; ?>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 </div>
                             </div>
-                        </div>
                         </div>
                     <?php endforeach; ?>    
                 <?php endif; ?>

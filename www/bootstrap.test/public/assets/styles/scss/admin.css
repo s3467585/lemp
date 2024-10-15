@@ -402,6 +402,60 @@ main .wrapper section .cards {
     grid-template-columns: 1fr;
   }
 }
+main .wrapper section .cards .card .side-bar-span {
+  white-space: nowrap;
+  font-size: 14px;
+  text-align: left;
+  opacity: 1;
+  transition: opacity 0.5s ease, width 0.5s ease;
+}
+main .wrapper section .cards .card .side-bar-span.hiden {
+  opacity: 0;
+  width: 0;
+}
+@media (max-width: 768px) {
+  main .wrapper section .cards .card .side-bar-span {
+    opacity: 0;
+    width: 0;
+  }
+}
+main .wrapper section .cards .card .card-header-between {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 16px;
+  border-radius: calc(0.375rem - 1px);
+  background-color: var(--color-side-bar);
+}
+main .wrapper section .cards .card .card-header-between li {
+  display: flex;
+  gap: 10px;
+}
+main .wrapper section .cards .card .card-header-between a {
+  display: flex;
+  padding: 4px 10px;
+  align-items: center;
+  border-radius: 10px;
+  color: var --color-text-menu;
+  text-decoration: none;
+}
+main .wrapper section .cards .card .card-header-between a:hover {
+  background-color: var(--color-menu-hover);
+  color: var(--color-menu-hover-text);
+}
+main .wrapper section .cards .card .card-header-between a i {
+  height: 23px;
+  width: 30px;
+  text-align: center;
+}
+main .wrapper section .cards .nav a {
+  color: var(--color-text-menu);
+}
+main .wrapper section .cards .nav a .active {
+  color: var(--color-menu-hover-text);
+  background-color: var(--color-menu-hover);
+}
 main .wrapper section .cards .adm-card {
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
   background-color: var(--color-side-bar);
