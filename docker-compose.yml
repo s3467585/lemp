@@ -1,5 +1,6 @@
 # docker-compose up -d
 # sudo docker run -it --entrypoint /bin/bash <container_name>
+# sudo docker run -it --entrypoint /bin/bash lemp_nginx
 # sudo docker exec -it lemp_mysql mysql -u root -p
 # Версия docker-compose
 version: '3'
@@ -49,11 +50,13 @@ services:
       # NOTE: use of "mysql_native_password" is not recommended: https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
       # (this is just an example, not intended to be a production configuration)
       volumes:
+        #
+        - ./mysql:/var/lib/mysql
+        #
         - ./etc/mysql:/etc/mysql/my.cnf
         - ./etc/mysql:/etc/mysql/conf.d
         - ./etc/mysql:/etc/mysql/mysql.conf.d 
         - ./data:/docker-entrypoint-initdb.d
-        - ./mysql:/var/lib/mysql
         - ./logs/mysql:/var/log/mysql
         #- ./mysql-files:/var/lib/mysql-files
       command: --default-authentication-plugin=mysql_native_password
@@ -65,9 +68,9 @@ services:
         # So you don't have to use root, but you can if you like
         MYSQL_USER: user
         # You can use whatever password you like
-        MYSQL_PASSWORD: admin
+        MYSQL_PASSWORD: user
         # Password for root access
-        MYSQL_ROOT_PASSWORD: admin
+        MYSQL_ROOT_PASSWORD: root
   pma:
      image: phpmyadmin/phpmyadmin
      container_name: lemp_phpmyadmin
