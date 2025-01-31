@@ -48,7 +48,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/sup/administration">
                         <span class="icon"><i class="fas fa-desktop"></i></span>
                         <span class="side-bar-span item">My Dashboard</span>
                     </a>
@@ -173,7 +173,6 @@
                 <?php if (isset($_SESSION["admin"])): ?>
                     <!-- Content -->
                     <?php echo $content; ?>
-                    <!--  -->
                 <?php endif; ?>
             </section>
             <!-- FOOTER -->

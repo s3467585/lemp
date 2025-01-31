@@ -10,7 +10,6 @@
                 <?php if (empty($devices)): ?>
                             <p>Устройства не найдены</p>
                     <?php else: ?>
-
                     <?php foreach ($devices as $device): ?>  
                         <!-- Карточка девайса -->
                         <div class="col"> 
@@ -108,6 +107,44 @@
                                         </div>
                                     </div>
                                     <!-- Блоклок settings -->
+
+                                    <!-- Модальное окно settings-->
+                                    <div class="modal fade" id="bindModal-<?php echo($device["id"]); ?>" tabindex="-1" aria-labelledby="bindModalLabel-<?php echo($device["id"]); ?>" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <form class="form_js" id="form_js-<?php echo($device["id"]); ?>" action="#" method="post">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title fs-5" id="bindModalLabel-<?php echo($device["id"]); ?>"><?php echo($device["devName"]); ?></h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                            <table class="table .table-sm">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col">Users</th>
+                                                                        <th scope="col">Bind</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr class="users">
+                                                                        <td scope="row">1</td>
+                                                                        <td>
+                                                                            <input type="checkbox" checked id="name" value="abhishek" name="user_name" />
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                                                        <button type="submit" class="btn btn-primary btn_js" form="form_js-<?php echo($device["id"]); ?>">Применить</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="tab-pane fade" id="settings-<?php echo($device["id"]); ?>" role="tabpanel">
                                         <div class="card">
                                             <div class="card-header-between">
@@ -122,7 +159,11 @@
                                                     </li>
                                                     <!-- Вкладка edit -->
                                                     <li class="nav-item">
-                                                        <a class="" data-bs-toggle="tab" href="#edit-<?php echo($device["id"]); ?>">
+                                                        <!-- <a class="" data-bs-toggle="tab" href="#edit-<?php echo($device["id"]); ?>">
+                                                            <span class="icon"><i class="fas fa-cog"></i></span>
+                                                            <span class="side-bar-span">Редактировать</span>           
+                                                        </a> -->
+                                                        <a class="bind" data-bs-toggle="modal" data-bs-target="#bindModal-<?php echo($device["id"]); ?>">
                                                             <span class="icon"><i class="fas fa-cog"></i></span>
                                                             <span class="side-bar-span">Редактировать</span>           
                                                         </a>
@@ -136,13 +177,23 @@
                                                     <!-- Блоклок users -->
                                                     <div class="tab-pane fade show active" id="users-<?php echo($device["id"]); ?>" role="tabpanel">
                                                         <div lass="d-flex"> 
-                                                            <ul class="list-group list-group-flush"> 
+                                                        <table class="table .table-sm"> 
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">Users</th>
+                                                                </tr>
+                                                            </thead>
                                                             <!-- Подписанные пользователи -->
                                                             <?php 
                                                                 $i = 0; 
                                                                 foreach($binding as $bind) {
                                                                     if ($bind['devName'] == $device['devName']) {
-                                                                        echo '<li class="list-group-item">'.$bind['user'].'</li>';
+                                                                        echo '
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>'.$bind['user'].'</td>
+                                                                            </tr>
+                                                                        </tbody>';
                                                                         ++$i;
                                                                     }
                                                                 }
@@ -150,16 +201,29 @@
                                                                     echo '<p>Клиенты не найдены</p>';
                                                                 }
                                                             ?>
-                                                            </ul>
+                                                            </table>
                                                         </div>
                                                     </div>
                                                     <!-- Блоклок edit -->
                                                     <div class="tab-pane fade" id="edit-<?php echo($device["id"]); ?>" role="tabpanel">
-                                                        <ul class="list-group list-group-flush">
-                                                            <?php foreach ($device as $user): ?>
-                                                                <li class="list-group-item"><?php echo $user; ?></li>
-                                                            <?php endforeach; ?>
-                                                        </ul>
+                                                        <form action="#" method="post">
+                                                            <table class="table .table-sm">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col">Users</th>
+                                                                        <th scope="col">Bind</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td scope="row">1</td>
+                                                                        <td>
+                                                                            <input type="checkbox" checked id="name" value="abhishek" name="user_name" />
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -171,6 +235,7 @@
                         </div>
                     <?php endforeach; ?>    
                 <?php endif; ?>
+                <div> <?php d($devices); d($binding); ?></div>
             </div>
         </div>
     </div>

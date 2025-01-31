@@ -152,6 +152,11 @@ return [
 			'controller' => 'api',
 			'action' => 'json',
 		],
+		
+	'api/apiData' => [
+			'controller' => 'api',
+			'action' => 'apiData',
+		],
 
 
 ];

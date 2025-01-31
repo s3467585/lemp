@@ -150,6 +150,16 @@ class Database {
 		$this->query($sql, $params);
 		return true;
 	}
+	
+	/**
+	*	Получить все записи
+	*	@param String $tableName Имя изменяемой таблицы
+	**/
+	public function getAll($tableName) {
+		$sql = 'SELECT * FROM '.$tableName;
+		$data = $this->rowAll($sql);
+		return $data;
+	}
 
 
 

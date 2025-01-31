@@ -58,7 +58,6 @@
                 <div class="dev-chart">
                     <?php foreach ($vars['userDevSensors'][$devBindName] as $sensor => $value) : ?>
                         <?php if (!preg_match("/time/i",$value)) : ?>
-
                             <div id="<?= protect($devBindName); ?>-<?= protect($value); ?>-chart" style="width:100%; height:300px;"></div>
                         <?php endif ?>
 
@@ -108,19 +107,16 @@
                     <?php endforeach; ?>
         
                 </div>
-
                 <? endif; ?>
 
             </div>
         </div>
-
-
     <?php endforeach; ?>
 
 </div>
 
 
-<!-- 
+
 <div class="content-wrapper">
     <div class="container-fluid">
         <div class="card mb-3">
@@ -164,4 +160,4 @@
         </div>
     </div>
 </div> 
--->
+

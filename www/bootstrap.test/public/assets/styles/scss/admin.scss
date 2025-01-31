@@ -11,6 +11,14 @@ body {
     background: darkcyan;
 }
 
+li, .card, .table {
+    background-color: var(--color-side-bar) !important;
+    color: var(--color-text) !important;
+}
+.bb {
+    border-bottom: 1px solid var(--color-line)!important;
+}
+
 /* SIDE-BAR */
 .side-bar {
     position: fixed;
@@ -67,7 +75,7 @@ body {
 }
 
 /* SIDE-BAR BUTTON */
-.btn{
+.sb_btn{
     width: 100%;
     height: 45px;
     margin-bottom: 20px;
@@ -269,10 +277,15 @@ main {
         height: 100%;
         display: flex;
         gap: 10px;
-        padding-top: 10px;
+        padding: 10px;
         flex-direction: column;
         justify-content: space-between;
-
+        @media (max-width:576px){
+            .wrapper {
+              padding: 5px;
+              gap: 5px;
+            }
+          }
         
         /* TOP MENU */
         .top-menu{
@@ -280,7 +293,7 @@ main {
             min-height: 50px;
             align-items: center;
             justify-content: space-between;
-            margin: 0 10px;
+            //margin: 0 10px;
             padding: 5px 10px;
             background-color: var(--color-side-bar);
             border-radius: 10px;
@@ -311,7 +324,7 @@ main {
             //width: 100vh;
             height: 100%;
             //padding: 5px 10px;
-            margin: 0 10px;
+            //margin: 0 10px;
             border-radius: 10px;
             border:2px solid var(--color-side-bar);
             overflow-y: auto;
@@ -340,6 +353,7 @@ main {
                     //flex-direction: column;
                 }
                 .card {
+                    background-color: var(--color-side-bar);
                     .side-bar-span{
                         white-space: nowrap;
                         font-size: $font-size-m;

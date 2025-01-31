@@ -84,6 +84,7 @@ body {
   background: var(--color-white);
   font-family: "Outfit", sans-serif;
   font-size: 14px;
+  background: linear-gradient(187deg, #1192a1, #0d7d91, #13769a);
 }
 
 a {
@@ -150,20 +151,34 @@ main {
   flex: 1 0 auto;
   display: flex;
   justify-content: center;
-  padding: 50px 0;
+  align-items: center;
+}
+@media (max-width: 576px) {
+  main main {
+    padding: 5px 0;
+  }
 }
 
 .form {
+  min-height: 656px;
   background: rgba(19, 35, 47, 0.9);
   padding: 30px;
   width: 100%;
   max-width: 570px;
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
 }
+.form .form_logo {
+  padding-bottom: 1em;
+}
+.form .form_logo_img {
+  width: 100%;
+  object-fit: cover;
+}
 
 @media (max-width: 576px) {
   .form {
     padding: 20px;
+    min-height: 524px;
   }
 }
 .tab-group {

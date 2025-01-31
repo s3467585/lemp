@@ -7,6 +7,7 @@
         </div>
         <div class="card-body">
             <div class="row row-cols-1 row-cols-lg-2 g-2">
+                <?php d($users) ?>
                 <?php if (empty($vars["users"])): ?>
                             <p>Пользователи не нефдены</p>
                     <?php else: ?>

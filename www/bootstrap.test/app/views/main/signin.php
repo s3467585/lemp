@@ -1,5 +1,9 @@
 <!-- Форма авторизации и регистрации -->
 <div class="form">
+	<!-- Logo -->
+	<div class="form_logo">
+		<a href="#"><img class="form_logo_img"  src="/public/assets/img/logo10.png" alt="logo"></a>
+	</div>
 	<ul class="tab-group">
 	<li class="tab active"><a href="#login">Авторизация</a></li>	
 	<li class="tab"><a href="#signup">Регистрация</a></li>

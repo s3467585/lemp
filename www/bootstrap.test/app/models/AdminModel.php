@@ -163,11 +163,10 @@ protected $tablePref = 'params_';
 	
 	
 
-	public function getNews() {
+	public function getAll($tablName) {
+		$data = $this->db->getAll($tablName);
+		return $data;
+		}
 
-		// code...
-		$result = $this->db->row('SELECT temp0, temp1, temp2 FROM stat_1');
-		return $result;
-	}
 }
 

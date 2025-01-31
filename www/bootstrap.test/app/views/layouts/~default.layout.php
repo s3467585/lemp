@@ -27,15 +27,37 @@
 
 <body class="content">
 	<div class="container">
-		
-		
+		<!-- Header -->
+		<header class="header">
+			<div class="header__wrapper">
+				<!-- Logo -->
+				<div class="header__logo">
+					<a href="#"><img class="header__logo__img"  src="/public/assets/img/logo-5.svg" alt="logo"></a>
+				</div>
+				<!-- Navbar -->
+				<nav class="side-bar-nav">
+					<ul class="">
+						<li class=""><a class="" aria-current="page" href="/">Главная</a></li>
+						<li class=""><a class="" aria-current="page" href="/about">Подробнее</a></li>
+						<li class=""><a class="" aria-current="page" href="/mail">Контакты</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
 
 		<!-- Main -->
 		<main class="">
-			
 			<?php echo $content; ?>
 		</main>
-		
+		<!-- Foter -->
+		<footer>
+			<a href="http://sovhome.ru/">
+				<span>
+					<!-- Copyright -->
+					&copy; 2019-<?= date('Y'); ?> sovhome</span></a>
+			</a>
+		</footer>
 	</div>
 	<script src="/public/assets/lib/bootstrap/bootstrap.min.js"></script>
 	<script src="/public/assets/js/chart.umd.min.js"></script>

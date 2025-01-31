@@ -20,6 +20,7 @@ $(document).ready(function() {
 		});
 	});
 
+	// Обработка активации и деактивации таблиц пользователя
 	$('a.btn').on('click', function(event) {
 		var json;
 		event.preventDefault();
@@ -41,6 +42,25 @@ $(document).ready(function() {
 			},
 		});
 	});
+
+
+	$('a.bind').on('click', function() {
+		//var formID = $('.form_js').attr('id');
+		// Добавление решётки к имени ID
+		//var formNm = $('#' + formID);
+		//console.log(formNm);
+		$.ajax({
+		type: "POST",
+		url: 'get.php',
+		success: function (data) {
+		// Вывод текста результата отправки
+		console.log(data);
+		//$(formNm).html(data);
+		},
+		
+		});
+		return false;
+		});
 
 
 

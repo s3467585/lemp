@@ -78,6 +78,7 @@ class AdminController extends Controller {
 		$var = [
 			'devices' => $this->model->devStatus(),
 			'binding' => $this->model->binding(),
+			'users' => $this->model->getAll('users'),
 		];
 		//debug ($var);
 		$this->view->render('Устройства', $var);

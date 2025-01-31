@@ -14,6 +14,8 @@ body {
   background: var(--color-white);
   font-family: 'Outfit', sans-serif;
   font-size: $font-size-m;
+  //background: linear-gradient(90deg, #c4dfe6,#66a5ad);
+  background: linear-gradient(187deg, #1192a1,#0d7d91,#13769a);                                    
 }
 
 a {
@@ -85,25 +87,40 @@ header {
 
 
 main {
-  // margin: auto;
   flex: 1 0 auto;
   display: flex;
   justify-content: center;
-  padding: 50px 0 ;
+  align-items: center;
+  @media (max-width:576px) {
+    main {
+      padding: 5px 0 ;
+    }
+  }
 }
 
 .form {
+  min-height: 656px;
   background: rgba($form-bg,.9);
   padding: 30px;
   width: 100%;
   max-width:570px;
   //border-radius:$br;
+  .form_logo {
+    padding-bottom: 1em;
+  }
   box-shadow:0 4px 10px 4px rgba($form-bg,.3);
+  .form_logo_img {
+    width: 100%;
+    object-fit: cover;
+  }
 }
+
+
 
 @media (max-width: 576px){
   .form {
     padding: 20px;
+    min-height: 524px;
   }
 }
 

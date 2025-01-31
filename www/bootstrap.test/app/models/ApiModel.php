@@ -65,4 +65,15 @@ class ApiModel extends Model {
 		}
 		return true;*/
 	}
+
+	public function apiData($version, $flag, $apiData) {
+		// version 
+		//	1 - формат apiDta devMAC = HEX, devJSON = JSON
+		
+		//flag
+		//	1 - статус устройства
+		//	100 - параметры датчиков
+		
+	}
+
 }
